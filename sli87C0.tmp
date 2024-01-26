@@ -1,8 +1,7 @@
-[gd_scene load_steps=21 format=3 uid="uid://cv5ljghmg7wxw"]
+[gd_scene load_steps=15 format=3 uid="uid://cv5ljghmg7wxw"]
 
 [ext_resource type="Texture2D" uid="uid://biabl5xvdey1s" path="res://Sprites/Character/Sprite-0005.png" id="1_4jdxo"]
 [ext_resource type="Script" path="res://slime.gd" id="1_cnv8e"]
-[ext_resource type="Texture2D" uid="uid://dkwc0vj5ykail" path="res://Sprites/Character/Sprite-0001.png" id="2_k4eo5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tobl6"]
 size = Vector2(16, 11)
@@ -65,57 +64,12 @@ tracks/1/keys = {
 [sub_resource type="Animation" id="Animation_l1qyc"]
 resource_name = "new_animation"
 
-[sub_resource type="Animation" id="Animation_2j8ey"]
-resource_name = "Die"
-length = 0.8
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"Die"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_oadiu"]
 _data = {
-"Die": SubResource("Animation_2j8ey"),
 "Jump": SubResource("Animation_5smv3"),
 "RESET": SubResource("Animation_cg1n8"),
 "new_animation": SubResource("Animation_l1qyc")
 }
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_trmiu"]
-atlas = ExtResource("2_k4eo5")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_duroo"]
-atlas = ExtResource("2_k4eo5")
-region = Rect2(16, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5b8sc"]
-atlas = ExtResource("2_k4eo5")
-region = Rect2(0, 16, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_a1fq8"]
-atlas = ExtResource("2_k4eo5")
-region = Rect2(16, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2d2rc"]
 atlas = ExtResource("1_4jdxo")
@@ -139,23 +93,6 @@ region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_q3kud"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_trmiu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_duroo")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5b8sc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_a1fq8")
-}],
-"loop": true,
-"name": &"Die",
-"speed": 5.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2d2rc")
@@ -207,11 +144,6 @@ autoplay = "Jump"
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_q3kud")
 animation = &"Jump"
-
-[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_q3kud")
-animation = &"Die"
-frame = 3
 
 [node name="DetectionArea" type="Area2D" parent="."]
 

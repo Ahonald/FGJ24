@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://c0xbihl6kfm8l"]
+[gd_scene load_steps=23 format=3 uid="uid://c0xbihl6kfm8l"]
 
 [ext_resource type="Texture2D" uid="uid://v7tprt42uy6m" path="res://Sprites/Character/Old hero.png" id="1_ag8gm"]
 [ext_resource type="Script" path="res://player.gd" id="1_nmjc3"]
@@ -287,8 +287,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lr0sk"]
-
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_nmjc3")
 
@@ -319,6 +317,7 @@ position = Vector2(8, 0)
 [node name="DamageBox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageBox"]
-shape = SubResource("RectangleShape2D_lr0sk")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
 
 [connection signal="body_entered" from="DamageBox" to="." method="_on_damage_box_body_entered"]

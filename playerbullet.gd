@@ -30,5 +30,7 @@ func _process(delta):
 
 
 func _on_area_2d_body_entered(body):
+	if(body.name.contains("Slime")):
+		body.die =true
 	if(body.name != "Player"):
 		queue_free() # Replace with function body.

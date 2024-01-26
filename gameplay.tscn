@@ -507,3 +507,5 @@ position = Vector2(93, -19)
 
 [node name="Slime4" parent="." instance=ExtResource("4_6itfw")]
 position = Vector2(224, 38)
+
+[node name="UI" type="CanvasLayer" parent="."]

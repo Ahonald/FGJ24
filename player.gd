@@ -17,6 +17,7 @@ var isPointingRight
 
 @onready var anim = get_node("AnimationPlayer") 
 @onready var bullet = preload("res://bullet.tscn")
+@onready var rb = $RigidBody2D
 
 func _ready():
 	anim.play("Idle")
@@ -29,18 +30,14 @@ func _ready():
 func _physics_process(delta):
 	bulletCooldown -= delta *100
 		
-	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
-	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 		if !isShooting:
 			anim.play("Jump")
-		#audio.play()
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
+			
 	var direction = Input.get_axis("ui_left", "ui_right")
 	if direction:
 		if direction == -1:
@@ -74,3 +71,15 @@ func _physics_process(delta):
 		move_and_slide()
 
 	move_and_slide()
+
+
+func _on_damage_box_body_entered(body):
+	print(body.get_name())
+	if(body.get_name().contains("Slime") && body.die == false) :
+		if(isPointingRight):
+			velocity.y = JUMP_VELOCITY
+			velocity.x = JUMP_VELOCITY
+		else:
+			velocity.y = JUMP_VELOCITY
+			velocity.x = -JUMP_VELOCITY
+		body.die = true
