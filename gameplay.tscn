@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://c28vkjmcpqbvk"]
+[gd_scene load_steps=6 format=3 uid="uid://c28vkjmcpqbvk"]
 
+[ext_resource type="PackedScene" uid="uid://c0xbihl6kfm8l" path="res://player.tscn" id="1_0fxm6"]
 [ext_resource type="Texture2D" uid="uid://dlegl8a6otekn" path="res://Sprites/Ground and Terrain/Lvl1Ground.png" id="1_uniq1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q0irt"]
@@ -153,9 +154,26 @@ texture_region_size = Vector2i(64, 64)
 [sub_resource type="TileSet" id="TileSet_74jtt"]
 sources/0 = SubResource("TileSetAtlasSource_q0irt")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k4tb2"]
+size = Vector2(574, 74)
+
 [node name="Gameplay" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_0fxm6")]
+position = Vector2(38, 1)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_74jtt")
 format = 2
 layer_0/tile_data = PackedInt32Array(2490368, 65536, 0, 2490369, 65536, 0, 2490370, 0, 0, 2490371, 65536, 0, 2490372, 131072, 0, 2490373, 0, 0, 2490374, 0, 0, 2490375, 131072, 0, 2490376, 131072, 0, 2490377, 196608, 0, 2490378, 131072, 0, 2490379, 131072, 0, 2490380, 131072, 0, 2490381, 131072, 0, 2490382, 196608, 0, 2490383, 196608, 0, 2490384, 0, 0, 2490385, 131072, 0, 2490386, 196608, 0, 2490387, 131072, 0, 2490388, 196608, 0, 2490389, 0, 0, 2490390, 65536, 0, 2490391, 65536, 0, 2490392, 131072, 0, 2490393, 65536, 0, 2490394, 196608, 0, 2490395, 196608, 0, 2490396, 65536, 0, 2490397, 131072, 0, 2490398, 196608, 0, 2490399, 0, 0, 2490400, 0, 0, 2490401, 0, 0, 2490402, 0, 0, 2490403, 196608, 0, 2490404, 196608, 0, 2490405, 65536, 0, 2490406, 65536, 0, 2490407, 196608, 0, 2490408, 196608, 0, 2490409, 196608, 0, 2490422, 65536, 0, 2490423, 196608, 0, 2490424, 65536, 0, 2490425, 0, 0, 2490426, 0, 0, 2490427, 196608, 0, 2490428, 196608, 0, 2490429, 0, 0, 2490430, 196608, 0, 2490431, 0, 0, 2490432, 65536, 0, 2490433, 65536, 0, 2490434, 196608, 0, 2490435, 196608, 0, 2490436, 196608, 0, 2490437, 0, 0, 2490438, 65536, 0, 2490439, 196608, 0, 2490410, 262144, 0, 2424881, 262144, 0, 2490418, 262144, 0, 2490415, 262144, 0, 2490412, 262144, 0, 2424874, 196608, 0, 2424878, 327680, 0, 2424882, 327680, 0, 2293806, 196608, 0, 2293810, 196608, 0)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(38, 66)
+
+[node name="Lvl1Ground" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(29, 1)
+texture = ExtResource("1_uniq1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(29, 3)
+shape = SubResource("RectangleShape2D_k4tb2")
