@@ -461,7 +461,7 @@ size = Vector2(574, 74)
 [node name="Gameplay" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_0fxm6")]
-position = Vector2(38, 1)
+position = Vector2(-266, -19)
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(-392, -468)
@@ -481,8 +481,9 @@ position = Vector2(29, 3)
 shape = SubResource("RectangleShape2D_k4tb2")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
-position = Vector2(-619, 711)
+position = Vector2(119, 525)
 rotation = -1.57725
+scale = Vector2(1, 0.281047)
 
 [node name="Lvl1Ground" type="Sprite2D" parent="StaticBody2D2"]
 position = Vector2(29, 1)
@@ -496,4 +497,13 @@ shape = SubResource("RectangleShape2D_k4tb2")
 position = Vector2(73, 2)
 
 [node name="Slime" parent="." instance=ExtResource("4_6itfw")]
-position = Vector2(158, 83)
+position = Vector2(37, 58)
+
+[node name="Slime2" parent="." instance=ExtResource("4_6itfw")]
+position = Vector2(166, 94)
+
+[node name="Slime3" parent="." instance=ExtResource("4_6itfw")]
+position = Vector2(93, -19)
+
+[node name="Slime4" parent="." instance=ExtResource("4_6itfw")]
+position = Vector2(224, 38)
