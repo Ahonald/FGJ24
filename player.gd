@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
 
-const SPEED = 200.0
-const JUMP_VELOCITY = -400.0
+const SPEED = 125.0
+const JUMP_VELOCITY = -250.0
 var bulletCooldown = 0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.

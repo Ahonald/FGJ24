@@ -306,6 +306,8 @@ animation = &"Idle"
 autoplay = "Idle"
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -1)
+zoom = Vector2(2, 2)
 
 [node name="PlayerAudio" type="AudioStreamPlayer2D" parent="."]
 
