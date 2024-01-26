@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://c28vkjmcpqbvk"]
+[gd_scene load_steps=7 format=3 uid="uid://c28vkjmcpqbvk"]
 
 [ext_resource type="PackedScene" uid="uid://c0xbihl6kfm8l" path="res://player.tscn" id="1_0fxm6"]
 [ext_resource type="Texture2D" uid="uid://dlegl8a6otekn" path="res://Sprites/Ground and Terrain/Lvl1Ground.png" id="1_uniq1"]
+[ext_resource type="PackedScene" uid="uid://bx2kf7upyj2uw" path="res://bullet.tscn" id="3_1ogx6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q0irt"]
 texture = ExtResource("1_uniq1")
@@ -177,3 +178,18 @@ texture = ExtResource("1_uniq1")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(29, 3)
 shape = SubResource("RectangleShape2D_k4tb2")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(277, 64)
+rotation = -1.57725
+
+[node name="Lvl1Ground" type="Sprite2D" parent="StaticBody2D2"]
+position = Vector2(29, 1)
+texture = ExtResource("1_uniq1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(29, 3)
+shape = SubResource("RectangleShape2D_k4tb2")
+
+[node name="Bullet" parent="." instance=ExtResource("3_1ogx6")]
+position = Vector2(73, 2)

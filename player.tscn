@@ -308,3 +308,6 @@ autoplay = "Idle"
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="PlayerAudio" type="AudioStreamPlayer2D" parent="."]
+
+[node name="BulletSpawnPoint" type="Node2D" parent="."]
+position = Vector2(8, 0)
