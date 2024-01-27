@@ -1,7 +1,8 @@
-[gd_scene load_steps=25 format=3 uid="uid://c0xbihl6kfm8l"]
+[gd_scene load_steps=26 format=3 uid="uid://c0xbihl6kfm8l"]
 
 [ext_resource type="Texture2D" uid="uid://v7tprt42uy6m" path="res://Sprites/Character/Old hero.png" id="1_ag8gm"]
 [ext_resource type="Script" path="res://player.gd" id="1_nmjc3"]
+[ext_resource type="Script" path="res://dmgtext.gd" id="3_0vemo"]
 [ext_resource type="FontFile" uid="uid://dkusyemblufbm" path="res://Fonts/Sabo-Filled.otf" id="3_ibg6f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ga48y"]
@@ -293,6 +294,19 @@ animations = [{
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_nmjc3")
 
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -4.0
+offset_top = -16.0
+offset_right = 82.0
+offset_bottom = 7.0
+scale = Vector2(0.337052, 0.470738)
+theme_override_colors/font_color = Color(0.682353, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_ibg6f")
+theme_override_font_sizes/font_size = 0
+text = "5"
+script = ExtResource("3_0vemo")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ga48y")
 
@@ -321,18 +335,6 @@ position = Vector2(8, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageBox"]
 shape = SubResource("RectangleShape2D_lr0sk")
-
-[node name="DmgNumbeContainer" type="Node2D" parent="."]
-position = Vector2(0, -9)
-
-[node name="Label" type="Label" parent="DmgNumbeContainer"]
-offset_left = -5.0
-offset_top = -22.0
-offset_right = 81.0
-offset_bottom = 1.0
-theme_override_fonts/font = ExtResource("3_ibg6f")
-theme_override_font_sizes/font_size = 0
-text = "1"
 
 [connection signal="area_entered" from="DamageBox" to="." method="_on_damage_box_area_entered"]
 [connection signal="body_entered" from="DamageBox" to="." method="_on_damage_box_body_entered"]

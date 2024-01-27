@@ -20,7 +20,7 @@ var isPointingRight
 @onready var rb = $RigidBody2D
 @onready var hpLabel = $"../UI/Label"
 @onready var hpBar = $"../UI/HealthBar"
-
+@onready var dmgText = $Label
 func _ready():
 	anim.play("Idle")
 	audio = get_node("PlayerAudio")
@@ -85,11 +85,15 @@ func _on_damage_box_body_entered(body):
 		else:
 			velocity.y = JUMP_VELOCITY
 			velocity.x = -JUMP_VELOCITY
-		health-=5
+		_takeDmg(5)
 		body.die = true
 
 
 func _on_damage_box_area_entered(area):
 	if(area.get_name().contains("Enemy") && area.get_parent().die == false) :
-		health-=5
+		_takeDmg(5)
 		area.get_parent().die = true
+
+func _takeDmg(dmg = 5):
+	health-=dmg
+	dmgText.displayDmgText(dmg)
