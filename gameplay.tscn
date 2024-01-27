@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://c28vkjmcpqbvk"]
+[gd_scene load_steps=8 format=3 uid="uid://c28vkjmcpqbvk"]
 
 [ext_resource type="PackedScene" uid="uid://c0xbihl6kfm8l" path="res://player.tscn" id="1_0fxm6"]
 [ext_resource type="Texture2D" uid="uid://dlegl8a6otekn" path="res://Sprites/Ground and Terrain/Lvl1Ground.png" id="1_uniq1"]
-[ext_resource type="PackedScene" uid="uid://76p3om2v567b" path="res://bat.tscn" id="4_qu063"]
+[ext_resource type="PackedScene" uid="uid://be6cm6lvj4oa3" path="res://enemy_bullet_redbullet.tscn" id="4_wojhh"]
+[ext_resource type="PackedScene" uid="uid://caxeh081dj7m8" path="res://robot.tscn" id="5_yjl5n"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q0irt"]
 texture = ExtResource("1_uniq1")
@@ -494,5 +495,8 @@ shape = SubResource("RectangleShape2D_k4tb2")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
-[node name="Bat" parent="." instance=ExtResource("4_qu063")]
-position = Vector2(1962, -1306)
+[node name="EnemyBullet" parent="." instance=ExtResource("4_wojhh")]
+position = Vector2(2085, -1264)
+
+[node name="Robot" parent="." instance=ExtResource("5_yjl5n")]
+position = Vector2(1786, -1185)

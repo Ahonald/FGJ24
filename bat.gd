@@ -10,7 +10,7 @@ var yDelta = 0
 
 @onready var gameplay = $".."
 @onready var anim = get_node("AnimationPlayer") 
-@onready var bullet = preload("res://enemy_bullet.tscn")
+@onready var bullet = preload("res://enemy_bullet_fireball.tscn")
 @onready var bulletPoint = $BulletSpawnPoint
 @onready var bulletPoint2 = $BulletSpawnPoint2
 @onready var bulletPoint3 = $BulletSpawnPoint3
