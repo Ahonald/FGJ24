@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c202yvemg0spw"]
+[gd_scene load_steps=21 format=3 uid="uid://c202yvemg0spw"]
 
 [ext_resource type="PackedScene" uid="uid://c0xbihl6kfm8l" path="res://player.tscn" id="1_0fxm6"]
 [ext_resource type="Script" path="res://gameplay.gd" id="1_m4jxv"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://d1sqkef75r3m2" path="res://Sprites/black.png" id="7_5vkda"]
 [ext_resource type="PackedScene" uid="uid://dtd25jm2xcf4k" path="res://moving_platform.tscn" id="9_qdffp"]
 [ext_resource type="Script" path="res://PowerUpSelectButton.gd" id="9_y6jaa"]
+[ext_resource type="PackedScene" uid="uid://cmq1intcs1dw3" path="res://boss_enemy.tscn" id="13_8a5fx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q0irt"]
 texture = ExtResource("1_uniq1")
@@ -1078,6 +1079,9 @@ position = Vector2(2414, -1335)
 
 [node name="MovingPlatform" parent="." instance=ExtResource("9_qdffp")]
 position = Vector2(1707, -1124)
+
+[node name="BossEnemy" parent="." instance=ExtResource("13_8a5fx")]
+position = Vector2(2954, -1343)
 
 [connection signal="pressed" from="UI/LevelUpPanel/BG/Button" to="UI/LevelUpPanel/BG/Button" method="_on_pressed"]
 [connection signal="pressed" from="UI/LevelUpPanel/BG/Button2" to="UI/LevelUpPanel/BG/Button2" method="_on_pressed"]
