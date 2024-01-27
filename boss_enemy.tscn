@@ -1,24 +1,25 @@
-[gd_scene load_steps=10 format=3 uid="uid://cmq1intcs1dw3"]
+[gd_scene load_steps=11 format=3 uid="uid://cmq1intcs1dw3"]
 
 [ext_resource type="Texture2D" uid="uid://dld5q1ejj6nm6" path="res://Sprites/Character/boss.png" id="1_qurbw"]
+[ext_resource type="Script" path="res://boss_enemy.gd" id="1_wldjs"]
 [ext_resource type="Texture2D" uid="uid://bm0mhemvwcnoc" path="res://Sprites/Character/boss2.png" id="2_r5q7q"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_t5vps"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_7dwg2"]
 atlas = ExtResource("1_qurbw")
-region = Rect2(0, 0, 32, 32)
+region = Rect2(0, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_o3xh1"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_phupj"]
 atlas = ExtResource("2_r5q7q")
-region = Rect2(0, 0, 32, 32)
+region = Rect2(0, 0, 128, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rljat"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_t5vps")
+"texture": SubResource("AtlasTexture_7dwg2")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_o3xh1")
+"texture": SubResource("AtlasTexture_phupj")
 }],
 "loop": true,
 "name": &"Idle",
@@ -86,10 +87,10 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5ydkr"]
-size = Vector2(22.1, 22.2)
+size = Vector2(68, 78)
 
 [node name="BossEnemy" type="CharacterBody2D"]
-scale = Vector2(10, 10)
+script = ExtResource("1_wldjs")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_rljat")
@@ -102,6 +103,58 @@ libraries = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.949999, -1.1)
+position = Vector2(-2, -3)
 scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_5ydkr")
+
+[node name="RightHandPosition" type="Node2D" parent="."]
+position = Vector2(300, 0)
+
+[node name="RightHandHighPosition" type="Node2D" parent="."]
+position = Vector2(300, -120)
+
+[node name="LeftHandPosition" type="Node2D" parent="."]
+position = Vector2(-300, 0)
+
+[node name="LeftHandHighPosition" type="Node2D" parent="."]
+position = Vector2(-300, -120)
+
+[node name="RightHandBullets" type="Node2D" parent="."]
+position = Vector2(41, -3)
+
+[node name="RHB" type="Node2D" parent="RightHandBullets"]
+position = Vector2(0, 10)
+
+[node name="RHB2" type="Node2D" parent="RightHandBullets"]
+position = Vector2(0, 20)
+
+[node name="RHB3" type="Node2D" parent="RightHandBullets"]
+
+[node name="RHB4" type="Node2D" parent="RightHandBullets"]
+position = Vector2(0, -10)
+
+[node name="RHB5" type="Node2D" parent="RightHandBullets"]
+position = Vector2(0, -20)
+
+[node name="RHB6" type="Node2D" parent="RightHandBullets"]
+position = Vector2(0, -30)
+
+[node name="LeftHandBullets" type="Node2D" parent="."]
+position = Vector2(-54, -2)
+
+[node name="LHB" type="Node2D" parent="LeftHandBullets"]
+position = Vector2(0, 20)
+
+[node name="LHB2" type="Node2D" parent="LeftHandBullets"]
+position = Vector2(0, 10)
+
+[node name="LHB3" type="Node2D" parent="LeftHandBullets"]
+
+[node name="LHB4" type="Node2D" parent="LeftHandBullets"]
+position = Vector2(0, -10)
+
+[node name="LHB5" type="Node2D" parent="LeftHandBullets"]
+position = Vector2(0, -20)
+
+[node name="LHB6" type="Node2D" parent="LeftHandBullets"]
+position = Vector2(0, -30)

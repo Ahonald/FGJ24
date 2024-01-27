@@ -98,7 +98,7 @@ func _physics_process(delta):
 
 
 func _on_damage_box_body_entered(body):
-	if(body.get_name().contains("Enemy") && body.die == false) :
+	if(body.get_name().contains("Enemy")) :
 		if(isPointingRight):
 			velocity.y = JUMP_VELOCITY
 			velocity.x = JUMP_VELOCITY
@@ -106,7 +106,7 @@ func _on_damage_box_body_entered(body):
 			velocity.y = JUMP_VELOCITY
 			velocity.x = -JUMP_VELOCITY
 		_takeDmg(5)
-		body.die = true
+		#body.die = true
 
 
 func _on_damage_box_area_entered(area):

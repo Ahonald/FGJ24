@@ -1,12 +1,10 @@
-[gd_scene load_steps=21 format=3 uid="uid://c202yvemg0spw"]
+[gd_scene load_steps=19 format=3 uid="uid://c202yvemg0spw"]
 
 [ext_resource type="PackedScene" uid="uid://c0xbihl6kfm8l" path="res://player.tscn" id="1_0fxm6"]
 [ext_resource type="Script" path="res://gameplay.gd" id="1_m4jxv"]
 [ext_resource type="Texture2D" uid="uid://dlegl8a6otekn" path="res://Sprites/Ground and Terrain/Lvl1Ground.png" id="1_uniq1"]
 [ext_resource type="Texture2D" uid="uid://cy1jupbw7upg1" path="res://Sprites/Ground and Terrain/GroundSheetPurple32x32.png" id="3_hv7vg"]
 [ext_resource type="FontFile" uid="uid://dkusyemblufbm" path="res://Fonts/Sabo-Filled.otf" id="3_omyyo"]
-[ext_resource type="PackedScene" uid="uid://cv5ljghmg7wxw" path="res://slime.tscn" id="4_6itfw"]
-[ext_resource type="PackedScene" uid="uid://76p3om2v567b" path="res://bat.tscn" id="4_qu063"]
 [ext_resource type="Texture2D" uid="uid://26jmcdr0aqe5" path="res://Sprites/Enviromental/Misc.png" id="4_y0pm4"]
 [ext_resource type="Script" path="res://LevelUpPanel.gd" id="7_1b24v"]
 [ext_resource type="Texture2D" uid="uid://d1sqkef75r3m2" path="res://Sprites/black.png" id="7_5vkda"]
@@ -830,7 +828,7 @@ script = ExtResource("1_m4jxv")
 
 [node name="Player" parent="." instance=ExtResource("1_0fxm6")]
 process_mode = 1
-position = Vector2(2127, -1185)
+position = Vector2(2310, -1158)
 
 [node name="TileMap" type="TileMap" parent="."]
 process_mode = 1
@@ -1033,55 +1031,11 @@ text = ",fkdhg dsjkfgh skdljhg lkjsdfh göksdfh gkjsdhf gkjsdfh gksjdfhg klsdfhg
 autowrap_mode = 2
 text_overrun_behavior = 1
 
-[node name="BatEnemy" parent="." instance=ExtResource("4_qu063")]
-process_mode = 1
-position = Vector2(2722, -1357)
-
-[node name="SlimeEnemy" parent="." instance=ExtResource("4_6itfw")]
-process_mode = 1
-position = Vector2(2283, -1181)
-
-[node name="SlimeEnemy2" parent="." instance=ExtResource("4_6itfw")]
-process_mode = 1
-position = Vector2(2515, -1270)
-
-[node name="SlimeEnemy3" parent="." instance=ExtResource("4_6itfw")]
-process_mode = 1
-position = Vector2(2259, -1249)
-
-[node name="SlimeEnemy4" parent="." instance=ExtResource("4_6itfw")]
-process_mode = 1
-position = Vector2(2283, -1205)
-
-[node name="SlimeEnemy5" parent="." instance=ExtResource("4_6itfw")]
-process_mode = 1
-position = Vector2(2376, -1236)
-
-[node name="SlimeEnemy6" parent="." instance=ExtResource("4_6itfw")]
-process_mode = 1
-position = Vector2(2321, -1280)
-
-[node name="SlimeEnemy7" parent="." instance=ExtResource("4_6itfw")]
-process_mode = 1
-position = Vector2(2553, -1369)
-
-[node name="SlimeEnemy8" parent="." instance=ExtResource("4_6itfw")]
-process_mode = 1
-position = Vector2(2297, -1348)
-
-[node name="SlimeEnemy9" parent="." instance=ExtResource("4_6itfw")]
-process_mode = 1
-position = Vector2(2321, -1304)
-
-[node name="SlimeEnemy10" parent="." instance=ExtResource("4_6itfw")]
-process_mode = 1
-position = Vector2(2414, -1335)
-
 [node name="MovingPlatform" parent="." instance=ExtResource("9_qdffp")]
 position = Vector2(1707, -1124)
 
 [node name="BossEnemy" parent="." instance=ExtResource("13_8a5fx")]
-position = Vector2(2954, -1343)
+position = Vector2(2136, -1183)
 
 [connection signal="pressed" from="UI/LevelUpPanel/BG/Button" to="UI/LevelUpPanel/BG/Button" method="_on_pressed"]
 [connection signal="pressed" from="UI/LevelUpPanel/BG/Button2" to="UI/LevelUpPanel/BG/Button2" method="_on_pressed"]

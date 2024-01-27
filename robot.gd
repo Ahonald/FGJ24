@@ -67,7 +67,6 @@ func _on_detection_area_body_exited(body):
 func _shoot():		
 	var newBullet = bullet.instantiate()
 	gameplay.add_child(newBullet)
-	bulletPoint2
 	newBullet.dirX = bulletDir
 	newBullet.dirY = 0
 	newBullet.MaxSpeed = 200
