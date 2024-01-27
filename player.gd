@@ -41,7 +41,7 @@ func _ready():
 	audio = get_node("PlayerAudio")
 	bulletPoint = get_node("BulletSpawnPoint")
 	gameplay = $".."
-	
+	xpBar.max_value = float(nextXP)
 	dead = false
 
 func _physics_process(delta):
@@ -53,6 +53,8 @@ func _physics_process(delta):
 	
 	if(xp >= nextXP):
 		gameplay._levelUp()
+		xpBar.max_value = float(nextXP)
+		
 	if(health<= 0 && !die):
 		health = 0
 		die = true
@@ -117,13 +119,13 @@ func _on_damage_box_body_entered(body):
 		else:
 			velocity.y = JUMP_VELOCITY
 			velocity.x = -JUMP_VELOCITY
-		_takeDmg(5)
+		_takeDmg(body.dmg) 
 		#body.die = true
 
 
 func _on_damage_box_area_entered(area):
 	if(area.get_name().contains("Enemy") && area.get_parent().die == false) :
-		_takeDmg(5)
+		_takeDmg(area.get_parent().dmg)
 		area.get_parent().die = true
 
 func _takeDmg(dmg = 5):

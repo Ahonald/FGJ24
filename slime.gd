@@ -8,8 +8,9 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var playerDamage = 5
 
-var health = 10
-var xpValue = 5
+@export var health: int = 10
+@export var xpValue: int = 5
+@export var dmg: int = 5
 
 var playerIsNear
 var canSeePlayer

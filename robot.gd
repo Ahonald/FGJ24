@@ -1,9 +1,10 @@
 extends CharacterBody2D
 
-var health = 20
+@export var health :int  = 20
 var die = false
-var xpValue = 10
-
+@export var xpValue :int = 10
+@export var bulletDmg: int = 5
+var dmg = 5
 var playerIsNear
 var canSeePlayer
 var shootCoolDown = 0
@@ -74,6 +75,7 @@ func _shoot():
 	newBullet.hasdeathAnim = false
 	newBullet.position.x = bulletPoint.global_position.x if bulletDir == 1 else bulletPoint2.global_position.x
 	newBullet.position.y = bulletPoint.global_position.y if bulletDir == 1 else bulletPoint2.global_position.y
+	newBullet.dmg = bulletDmg
 	anim.play("shoot")
 
 func _takeDamage(dmg = 5):

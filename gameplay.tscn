@@ -1,17 +1,22 @@
-[gd_scene load_steps=22 format=3 uid="uid://c202yvemg0spw"]
+[gd_scene load_steps=27 format=3 uid="uid://c202yvemg0spw"]
 
 [ext_resource type="PackedScene" uid="uid://c0xbihl6kfm8l" path="res://player.tscn" id="1_0fxm6"]
 [ext_resource type="Script" path="res://gameplay.gd" id="1_m4jxv"]
 [ext_resource type="Texture2D" uid="uid://dlegl8a6otekn" path="res://Sprites/Ground and Terrain/Lvl1Ground.png" id="1_uniq1"]
 [ext_resource type="Texture2D" uid="uid://cy1jupbw7upg1" path="res://Sprites/Ground and Terrain/GroundSheetPurple32x32.png" id="3_hv7vg"]
 [ext_resource type="FontFile" uid="uid://dkusyemblufbm" path="res://Fonts/Sabo-Filled.otf" id="3_omyyo"]
+[ext_resource type="PackedScene" uid="uid://cv5ljghmg7wxw" path="res://slime.tscn" id="4_6itfw"]
 [ext_resource type="Texture2D" uid="uid://26jmcdr0aqe5" path="res://Sprites/Enviromental/Misc.png" id="4_y0pm4"]
 [ext_resource type="Script" path="res://LevelUpPanel.gd" id="7_1b24v"]
 [ext_resource type="Texture2D" uid="uid://d1sqkef75r3m2" path="res://Sprites/black.png" id="7_5vkda"]
 [ext_resource type="PackedScene" uid="uid://dtd25jm2xcf4k" path="res://moving_platform.tscn" id="9_qdffp"]
 [ext_resource type="Script" path="res://PowerUpSelectButton.gd" id="9_y6jaa"]
 [ext_resource type="Script" path="res://GameOverHud.gd" id="10_nujua"]
-[ext_resource type="PackedScene" uid="uid://cmq1intcs1dw3" path="res://boss_enemy.tscn" id="13_8a5fx"]
+[ext_resource type="PackedScene" uid="uid://dubg01op5mmoy" path="res://slime_green.tscn" id="12_abg1h"]
+[ext_resource type="PackedScene" uid="uid://vgxngyn8ff16" path="res://slime_yellow.tscn" id="14_7np4m"]
+[ext_resource type="PackedScene" uid="uid://dwamwgvog17v8" path="res://slime_red.tscn" id="15_p5faw"]
+[ext_resource type="PackedScene" uid="uid://bqdfi0uceuttp" path="res://purple_robot.tscn" id="16_2jgya"]
+[ext_resource type="PackedScene" uid="uid://caxeh081dj7m8" path="res://robot.tscn" id="17_wwgof"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q0irt"]
 texture = ExtResource("1_uniq1")
@@ -1103,8 +1108,23 @@ text = "To Main Menu"
 [node name="MovingPlatform" parent="." instance=ExtResource("9_qdffp")]
 position = Vector2(1707, -1124)
 
-[node name="BossEnemy" parent="." instance=ExtResource("13_8a5fx")]
-position = Vector2(2136, -1183)
+[node name="SlimeEnemy" parent="." instance=ExtResource("4_6itfw")]
+position = Vector2(2113, -1170)
+
+[node name="SlimeEnemy2" parent="." instance=ExtResource("12_abg1h")]
+position = Vector2(2156, -1196)
+
+[node name="SlimeEnemy3" parent="." instance=ExtResource("14_7np4m")]
+position = Vector2(2115, -1249)
+
+[node name="SlimeEnemy4" parent="." instance=ExtResource("15_p5faw")]
+position = Vector2(2171, -1222)
+
+[node name="RobotEnemy" parent="." instance=ExtResource("16_2jgya")]
+position = Vector2(2575, -1145)
+
+[node name="RobotEnemy2" parent="." instance=ExtResource("17_wwgof")]
+position = Vector2(2537, -1144)
 
 [connection signal="pressed" from="UI/LevelUpPanel/BG/Button" to="UI/LevelUpPanel/BG/Button" method="_on_pressed"]
 [connection signal="pressed" from="UI/LevelUpPanel/BG/Button2" to="UI/LevelUpPanel/BG/Button2" method="_on_pressed"]

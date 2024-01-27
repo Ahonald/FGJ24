@@ -10,6 +10,8 @@ var PowerUpIndex1 = 1
 var PowerUpIndex2 = 2
 var PowerUpIndex3 = 3
 
+var rng = RandomNumberGenerator.new()
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -28,7 +30,11 @@ func _input(event):
 func _levelUp():
 	get_tree().paused = true
 	LevelUpPanel.visible = true
-	LevelUpPanel._levelUpPanelOpened(1,2,3)
+	PowerUpIndex1 = int(rng.randf_range(0, 3))
+	PowerUpIndex2 = int(rng.randf_range(0, 3))
+	PowerUpIndex3 = int(rng.randf_range(0, 3))
+	
+	LevelUpPanel._levelUpPanelOpened(PowerUpIndex1,PowerUpIndex2,PowerUpIndex3)
 
 func _grantPowerUp(index):
 	match index:

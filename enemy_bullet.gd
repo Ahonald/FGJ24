@@ -7,6 +7,7 @@ var MaxSpeed = 50
 var MaxDistance = 200
 var travelledDistance = 0
 var die = false
+var dmg = 5
 var hasdeathAnim = true
 
 @onready var anim = get_node("AnimationPlayer") 
