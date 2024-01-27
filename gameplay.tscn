@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://c28vkjmcpqbvk"]
+[gd_scene load_steps=12 format=3 uid="uid://c28vkjmcpqbvk"]
 
 [ext_resource type="PackedScene" uid="uid://c0xbihl6kfm8l" path="res://player.tscn" id="1_0fxm6"]
 [ext_resource type="Texture2D" uid="uid://dlegl8a6otekn" path="res://Sprites/Ground and Terrain/Lvl1Ground.png" id="1_uniq1"]
 [ext_resource type="FontFile" uid="uid://dkusyemblufbm" path="res://Fonts/Sabo-Filled.otf" id="3_omyyo"]
-[ext_resource type="PackedScene" uid="uid://be6cm6lvj4oa3" path="res://enemy_bullet_redbullet.tscn" id="4_wojhh"]
+[ext_resource type="PackedScene" uid="uid://cv5ljghmg7wxw" path="res://slime.tscn" id="4_6itfw"]
+[ext_resource type="PackedScene" uid="uid://76p3om2v567b" path="res://bat.tscn" id="4_qu063"]
 [ext_resource type="PackedScene" uid="uid://caxeh081dj7m8" path="res://robot.tscn" id="5_yjl5n"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q0irt"]
@@ -488,7 +489,7 @@ position = Vector2(29, 3)
 shape = SubResource("RectangleShape2D_k4tb2")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
-position = Vector2(2214, -762)
+position = Vector2(2219, -708)
 rotation = -1.57725
 scale = Vector2(1, 0.281047)
 
@@ -520,12 +521,14 @@ offset_bottom = 43.0
 theme_override_styles/background = SubResource("StyleBoxFlat_1ldbl")
 theme_override_styles/fill = SubResource("StyleBoxFlat_ukp3n")
 step = 1.0
-value = 50.0
 rounded = true
 show_percentage = false
 
-[node name="EnemyBullet" parent="." instance=ExtResource("4_wojhh")]
-position = Vector2(2085, -1264)
+[node name="RobotEnemy" parent="." instance=ExtResource("5_yjl5n")]
+position = Vector2(1806, -1185)
 
-[node name="Robot" parent="." instance=ExtResource("5_yjl5n")]
-position = Vector2(1786, -1185)
+[node name="BatEnemy" parent="." instance=ExtResource("4_qu063")]
+position = Vector2(2743, -1232)
+
+[node name="SlimeEnemy" parent="." instance=ExtResource("4_6itfw")]
+position = Vector2(2283, -1181)

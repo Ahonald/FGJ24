@@ -18,6 +18,8 @@ var isPointingRight
 @onready var anim = get_node("AnimationPlayer") 
 @onready var bullet = preload("res://playerBullet.tscn")
 @onready var rb = $RigidBody2D
+@onready var hpLabel = $"../UI/Label"
+@onready var hpBar = $"../UI/HealthBar"
 
 func _ready():
 	anim.play("Idle")
@@ -28,6 +30,8 @@ func _ready():
 	dead = false
 	
 func _physics_process(delta):
+	hpBar.value = health
+	hpLabel.text = str(health) + "/100"
 	bulletCooldown -= delta *100
 		
 	if not is_on_floor():
@@ -74,7 +78,6 @@ func _physics_process(delta):
 
 
 func _on_damage_box_body_entered(body):
-	print(body.get_name())
 	if(body.get_name().contains("Enemy") && body.die == false) :
 		if(isPointingRight):
 			velocity.y = JUMP_VELOCITY
@@ -87,4 +90,5 @@ func _on_damage_box_body_entered(body):
 
 func _on_damage_box_area_entered(area):
 	if(area.get_name().contains("Enemy") && area.get_parent().die == false) :
+		health-=5
 		area.get_parent().die = true

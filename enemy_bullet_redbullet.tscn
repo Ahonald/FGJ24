@@ -102,3 +102,5 @@ libraries = {
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_3pfrt")
 animation = &"Idle"
+
+[connection signal="body_entered" from="EnemyBulletArea" to="." method="_on_enemy_bullet_area_body_entered"]

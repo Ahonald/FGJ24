@@ -8,6 +8,8 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var playerDamage = 5
 
+var health = 10
+
 var playerIsNear
 var canSeePlayer
 var player
@@ -26,6 +28,8 @@ func _ready():
 	detectionCollision =  $DetectionArea/CollisionShape2D
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if(health <= 0):
+		die = true
 	if(die):
 		detectionArea.set_process(false)
 		collision.disabled = true
@@ -79,3 +83,6 @@ func _on_detection_area_body_exited(body):
 	if(body.name == "Player"):
 		playerIsNear = false
 		canSeePlayer = false
+		
+func _takeDamage(dmg = 5):
+	health-=5

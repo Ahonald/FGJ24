@@ -4,6 +4,7 @@ var speed = 500
 const MaxDistance = 500
 var travelledDistance = 0
 var isMovingRight = true
+var dmgValue = 5
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -30,7 +31,7 @@ func _process(delta):
 
 
 func _on_area_2d_body_entered(body):
-	if(body.name.contains("Slime")):
-		body.die =true
+	if(body.name.contains("Enemy")):
+		body._takeDamage(dmgValue)
 	if(body.name != "Player"):
 		queue_free() # Replace with function body.

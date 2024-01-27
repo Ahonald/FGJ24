@@ -4,7 +4,7 @@ var dirX = 1
 var dirY = 0
 
 var MaxSpeed = 50
-const MaxDistance = 200
+var MaxDistance = 200
 var travelledDistance = 0
 var die = false
 var hasdeathAnim = true

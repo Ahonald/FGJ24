@@ -17,10 +17,13 @@ var yDelta = 0
 
 @onready var player = $"../Player"
 
+var health = 10
 var die = false
 
 func _physics_process(delta):
-	
+	if(health <= 0):
+		die = true
+		
 	if(!die):
 		anim.play("Idle")
 		if(shootCoolDown >= 0):
@@ -81,6 +84,9 @@ func _shoot():
 func _on_hit_box_body_entered(body):
 	print(body)
 
-func _on_hit_box_area_entered(area):
-	if(area.get_parent().get_name() == "PlayerBullet"):
-		die = true # Replace with function body.
+#func _on_hit_box_area_entered(area):
+#	if(area.get_parent().get_name() == "PlayerBullet"):
+#		die = true # Replace with function body.
+
+func _takeDamage(dmg = 5):
+	health-=5
