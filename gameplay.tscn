@@ -532,3 +532,15 @@ position = Vector2(2743, -1232)
 
 [node name="SlimeEnemy" parent="." instance=ExtResource("4_6itfw")]
 position = Vector2(2283, -1181)
+
+[node name="SlimeEnemy2" parent="." instance=ExtResource("4_6itfw")]
+position = Vector2(2515, -1270)
+
+[node name="SlimeEnemy3" parent="." instance=ExtResource("4_6itfw")]
+position = Vector2(2259, -1249)
+
+[node name="SlimeEnemy4" parent="." instance=ExtResource("4_6itfw")]
+position = Vector2(2283, -1205)
+
+[node name="SlimeEnemy5" parent="." instance=ExtResource("4_6itfw")]
+position = Vector2(2376, -1236)

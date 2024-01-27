@@ -85,6 +85,7 @@ func _on_damage_box_body_entered(body):
 		else:
 			velocity.y = JUMP_VELOCITY
 			velocity.x = -JUMP_VELOCITY
+		health-=5
 		body.die = true
 
 
