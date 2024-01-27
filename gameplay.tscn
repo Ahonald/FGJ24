@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://c28vkjmcpqbvk"]
+[gd_scene load_steps=11 format=3 uid="uid://c28vkjmcpqbvk"]
 
 [ext_resource type="PackedScene" uid="uid://c0xbihl6kfm8l" path="res://player.tscn" id="1_0fxm6"]
 [ext_resource type="Texture2D" uid="uid://dlegl8a6otekn" path="res://Sprites/Ground and Terrain/Lvl1Ground.png" id="1_uniq1"]
+[ext_resource type="FontFile" uid="uid://dkusyemblufbm" path="res://Fonts/Sabo-Filled.otf" id="3_omyyo"]
 [ext_resource type="PackedScene" uid="uid://be6cm6lvj4oa3" path="res://enemy_bullet_redbullet.tscn" id="4_wojhh"]
 [ext_resource type="PackedScene" uid="uid://caxeh081dj7m8" path="res://robot.tscn" id="5_yjl5n"]
 
@@ -458,6 +459,12 @@ sources/0 = SubResource("TileSetAtlasSource_q0irt")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k4tb2"]
 size = Vector2(574, 74)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ldbl"]
+bg_color = Color(0.286275, 0.419608, 0.372549, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ukp3n"]
+bg_color = Color(1, 0, 0.145098, 1)
+
 [node name="Gameplay" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_0fxm6")]
@@ -494,6 +501,28 @@ position = Vector2(29, 3)
 shape = SubResource("RectangleShape2D_k4tb2")
 
 [node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="UI"]
+z_index = 1
+offset_left = 13.0
+offset_top = 18.0
+offset_right = 53.0
+offset_bottom = 41.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_omyyo")
+text = "HP"
+
+[node name="HealthBar" type="ProgressBar" parent="UI"]
+offset_left = 9.0
+offset_top = 16.0
+offset_right = 174.0
+offset_bottom = 43.0
+theme_override_styles/background = SubResource("StyleBoxFlat_1ldbl")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ukp3n")
+step = 1.0
+value = 50.0
+rounded = true
+show_percentage = false
 
 [node name="EnemyBullet" parent="." instance=ExtResource("4_wojhh")]
 position = Vector2(2085, -1264)
