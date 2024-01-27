@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxkcmlyswn4ji"]
+
+[ext_resource type="Script" path="res://MainMenuButton.gd" id="1_cwlci"]
+
+[node name="MainMenu" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Play" type="Button" parent="CanvasLayer"]
+offset_left = 535.0
+offset_top = 189.0
+offset_right = 577.0
+offset_bottom = 220.0
+focus_neighbor_bottom = NodePath("../QuitButton")
+text = "Play"
+script = ExtResource("1_cwlci")
+
+[node name="QuitButton" type="Button" parent="CanvasLayer"]
+offset_left = 537.0
+offset_top = 404.0
+offset_right = 579.0
+offset_bottom = 435.0
+focus_neighbor_top = NodePath("../Play")
+text = "Quit"
+
+[connection signal="pressed" from="CanvasLayer/Play" to="CanvasLayer/Play" method="_on_pressed"]

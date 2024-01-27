@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://dtd25jm2xcf4k"]
+
+[ext_resource type="Texture2D" uid="uid://cy1jupbw7upg1" path="res://Sprites/Ground and Terrain/GroundSheetPurple32x32.png" id="1_hfone"]
+[ext_resource type="Script" path="res://movingplatform.gd" id="2_t787t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rv8dd"]
+size = Vector2(16, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_02t3a"]
+atlas = ExtResource("1_hfone")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p6dbj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_02t3a")
+}],
+"loop": true,
+"name": &"Exist",
+"speed": 5.0
+}]
+
+[node name="MovingPlatform" type="CharacterBody2D"]
+script = ExtResource("2_t787t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_rv8dd")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_p6dbj")
+animation = &"Exist"
+autoplay = "Exist"

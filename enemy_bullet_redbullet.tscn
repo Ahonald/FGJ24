@@ -33,6 +33,9 @@ tracks/1/keys = {
 "values": [0]
 }
 
+[sub_resource type="Animation" id="Animation_jf53n"]
+resource_name = "Explode"
+
 [sub_resource type="Animation" id="Animation_8a15l"]
 length = 0.001
 tracks/0/type = "value"
@@ -60,9 +63,6 @@ tracks/1/keys = {
 "values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_jf53n"]
-resource_name = "Explode"
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_j1b5g"]
 _data = {
 "Exist": SubResource("Animation_qhsjc"),
@@ -86,9 +86,11 @@ animations = [{
 }]
 
 [node name="EnemyBullet" type="Node2D"]
+process_mode = 1
 script = ExtResource("1_rlv3e")
 
 [node name="EnemyBulletArea" type="Area2D" parent="."]
+process_mode = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyBulletArea"]
 position = Vector2(0, -1)

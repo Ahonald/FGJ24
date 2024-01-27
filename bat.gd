@@ -8,6 +8,8 @@ var shootCoolDown = 0
 var xDelta = 0
 var yDelta = 0
 
+var xpValue = 15
+
 @onready var gameplay = $".."
 @onready var anim = get_node("AnimationPlayer") 
 @onready var bullet = preload("res://enemy_bullet_fireball.tscn")
@@ -45,6 +47,7 @@ func _physics_process(delta):
 			_shoot()
 			shootCoolDown = 2
 	else:
+		player._getExp(xpValue)
 		queue_free()
 	
 						

@@ -1,9 +1,17 @@
 extends CharacterBody2D
 
 var health = 100
-const SPEED = 125.0
+var xp = 0
+var nextXP = 50
+
+var SPEED = 125.0
 const JUMP_VELOCITY = -250.0
-var bulletCooldown = 0
+var bulletCooldown = 60
+var currentBulletCooldown = 0
+
+var maxJumpCount = 2
+var jumpCount = 2
+
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -12,15 +20,18 @@ var bulletPoint
 var audio
 var dead
 var isShooting
-var gameplay
 var isPointingRight
 
 @onready var anim = get_node("AnimationPlayer") 
 @onready var bullet = preload("res://playerBullet.tscn")
 @onready var rb = $RigidBody2D
-@onready var hpLabel = $"../UI/Label"
-@onready var hpBar = $"../UI/HealthBar"
+@onready var hpLabel = $"../UI/HP/HPLabel"
+@onready var hpBar = $"../UI/HP/HealthBar"
+@onready var xpLabel = $"../UI/XP/XPLabel"
+@onready var xpBar = $"../UI/XP/XPBar"
 @onready var dmgText = $Label
+@onready var gameplay = $".."
+
 func _ready():
 	anim.play("Idle")
 	audio = get_node("PlayerAudio")
@@ -28,17 +39,26 @@ func _ready():
 	gameplay = $".."
 	
 	dead = false
-	
+
 func _physics_process(delta):
 	hpBar.value = health
 	hpLabel.text = str(health) + "/100"
-	bulletCooldown -= delta *100
+	xpBar.value = xp
+	xpLabel.text = "to next: " + str(nextXP-xp)
+	
+	if(xp >= nextXP):
+		gameplay._levelUp()
+	
+	currentBulletCooldown -= delta *100
 		
 	if not is_on_floor():
 		velocity.y += gravity * delta
+	else:
+		jumpCount = maxJumpCount
 
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+	if Input.is_action_just_pressed("ui_accept") and (is_on_floor() || jumpCount > 0):
 		velocity.y = JUMP_VELOCITY
+		jumpCount-=1
 		if !isShooting:
 			anim.play("Jump")
 			
@@ -60,9 +80,9 @@ func _physics_process(delta):
 	if velocity.y > 0 && !dead && !isShooting:
 		anim.play("Fall")
 	
-	if(Input.is_action_just_pressed("Fire") && bulletCooldown <= 0):
+	if(Input.is_action_just_pressed("Fire") && currentBulletCooldown <= 0):
 		isShooting = true
-		bulletCooldown = 60
+		currentBulletCooldown = bulletCooldown
 		var newBullet = bullet.instantiate()
 		gameplay.add_child(newBullet)
 		newBullet.position.x = bulletPoint.global_position.x
@@ -97,3 +117,6 @@ func _on_damage_box_area_entered(area):
 func _takeDmg(dmg = 5):
 	health-=dmg
 	dmgText.displayDmgText(dmg)
+
+func _getExp(expValue = 5):
+	xp+=expValue

@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 var health = 20
 var die = false
+var xpValue = 10
 
 var playerIsNear
 var canSeePlayer
@@ -50,6 +51,7 @@ func _process(delta):
 		if(health<=0):
 			die =true
 	else:
+		player._getExp(xpValue)
 		queue_free()
 		
 func _on_detection_area_body_entered(body):

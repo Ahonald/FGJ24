@@ -7,6 +7,33 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_6fx07"]
 radius = 8.0
 
+[sub_resource type="Animation" id="Animation_upfhr"]
+resource_name = "Exist"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Exist"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="Animation" id="Animation_d6wf8"]
 resource_name = "Explode"
 length = 0.6
@@ -48,33 +75,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [&"Explode"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_upfhr"]
-resource_name = "Exist"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"Exist"]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -138,6 +138,7 @@ animations = [{
 }]
 
 [node name="EnemyBullet" type="Node2D"]
+process_mode = 1
 scale = Vector2(0.6, 0.5)
 script = ExtResource("1_yqnqa")
 
@@ -152,6 +153,7 @@ libraries = {
 }
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+process_mode = 1
 sprite_frames = SubResource("SpriteFrames_im0yf")
 animation = &"Explode"
 autoplay = "Exist"

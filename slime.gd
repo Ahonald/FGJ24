@@ -9,6 +9,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var playerDamage = 5
 
 var health = 10
+var xpValue = 5
 
 var playerIsNear
 var canSeePlayer
@@ -38,6 +39,7 @@ func _process(delta):
 		velocity.y = 0
 		velocity.x = 0
 		await get_tree().create_timer(0.8).timeout
+		player._getExp(xpValue)
 		queue_free()
 	else:
 			
