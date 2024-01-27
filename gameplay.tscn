@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://c202yvemg0spw"]
+[gd_scene load_steps=30 format=3 uid="uid://c202yvemg0spw"]
 
 [ext_resource type="PackedScene" uid="uid://c0xbihl6kfm8l" path="res://player.tscn" id="1_0fxm6"]
 [ext_resource type="Script" path="res://gameplay.gd" id="1_m4jxv"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://dwamwgvog17v8" path="res://slime_red.tscn" id="15_p5faw"]
 [ext_resource type="PackedScene" uid="uid://bqdfi0uceuttp" path="res://purple_robot.tscn" id="16_2jgya"]
 [ext_resource type="PackedScene" uid="uid://caxeh081dj7m8" path="res://robot.tscn" id="17_wwgof"]
+[ext_resource type="PackedScene" uid="uid://b27md0v3h5q5c" path="res://death_zone.tscn" id="20_8juij"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q0irt"]
 texture = ExtResource("1_uniq1")
@@ -1144,6 +1145,9 @@ position = Vector2(2575, -1145)
 
 [node name="RobotEnemy2" parent="." instance=ExtResource("17_wwgof")]
 position = Vector2(2537, -1144)
+
+[node name="DeathZone" parent="." instance=ExtResource("20_8juij")]
+position = Vector2(1575, -1063)
 
 [connection signal="pressed" from="UI/LevelUpPanel/BG/Button" to="UI/LevelUpPanel/BG/Button" method="_on_pressed"]
 [connection signal="pressed" from="UI/LevelUpPanel/BG/Button2" to="UI/LevelUpPanel/BG/Button2" method="_on_pressed"]

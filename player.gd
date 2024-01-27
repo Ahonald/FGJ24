@@ -70,10 +70,6 @@ func _physics_process(delta):
 	if(health<= 0 && !die):
 		health = 0
 		die = true
-		anim.play("Die")
-		await get_tree().create_timer(1).timeout
-		sprite.visible = false
-		gameplay._gameOver()
 	if(!die):
 		currentBulletCooldown -= delta *100
 			
@@ -167,7 +163,11 @@ func _physics_process(delta):
 			move_and_slide()
 
 		move_and_slide()
-
+	else:
+		anim.play("Die")
+		await get_tree().create_timer(1).timeout
+		sprite.visible = false
+		gameplay._gameOver()
 
 func _on_damage_box_body_entered(body):
 	if(body.get_name().contains("Enemy")) :
