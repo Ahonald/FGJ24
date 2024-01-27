@@ -2,7 +2,9 @@ extends CharacterBody2D
 
 var health = 100
 var xp = 0
+var level = 1
 var nextXP = 50
+var die = false
 
 var SPEED = 125.0
 const JUMP_VELOCITY = -250.0
@@ -30,7 +32,9 @@ var isPointingRight
 @onready var xpLabel = $"../UI/XP/XPLabel"
 @onready var xpBar = $"../UI/XP/XPBar"
 @onready var dmgText = $Label
+@onready var lvlLabel = $"../UI/LevelLabel"
 @onready var gameplay = $".."
+@onready var sprite = $AnimatedSprite2D
 
 func _ready():
 	anim.play("Idle")
@@ -45,56 +49,64 @@ func _physics_process(delta):
 	hpLabel.text = str(health) + "/100"
 	xpBar.value = xp
 	xpLabel.text = "to next: " + str(nextXP-xp)
+	lvlLabel.text = "LVL " + str(level)
 	
 	if(xp >= nextXP):
 		gameplay._levelUp()
-	
-	currentBulletCooldown -= delta *100
-		
-	if not is_on_floor():
-		velocity.y += gravity * delta
-	else:
-		jumpCount = maxJumpCount
-
-	if Input.is_action_just_pressed("ui_accept") and (is_on_floor() || jumpCount > 0):
-		velocity.y = JUMP_VELOCITY
-		jumpCount-=1
-		if !isShooting:
-			anim.play("Jump")
+	if(health<= 0 && !die):
+		health = 0
+		die = true
+		anim.play("Die")
+		await get_tree().create_timer(1).timeout
+		sprite.visible = false
+		gameplay._gameOver()
+	if(!die):
+		currentBulletCooldown -= delta *100
 			
-	var direction = Input.get_axis("ui_left", "ui_right")
-	if direction:
-		if direction == -1:
-			get_node("AnimatedSprite2D").flip_h = true
-			isPointingRight = false
-		elif direction == 1:
-			get_node("AnimatedSprite2D").flip_h = false
-			isPointingRight = true
-		velocity.x = direction * SPEED
-		if velocity.y == 0 && !isShooting:
-			anim.play("Run")
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		if velocity.y == 0 && !isShooting:
-			anim.play("Idle")
-	if velocity.y > 0 && !dead && !isShooting:
-		anim.play("Fall")
-	
-	if(Input.is_action_just_pressed("Fire") && currentBulletCooldown <= 0):
-		isShooting = true
-		currentBulletCooldown = bulletCooldown
-		var newBullet = bullet.instantiate()
-		gameplay.add_child(newBullet)
-		newBullet.position.x = bulletPoint.global_position.x
-		newBullet.position.y = bulletPoint.global_position.y
-		anim.play("Shoot")
-		await anim.animation_finished
-		isShooting = false
-		
-	if !dead:
-		move_and_slide()
+		if not is_on_floor():
+			velocity.y += gravity * delta
+		else:
+			jumpCount = maxJumpCount
 
-	move_and_slide()
+		if Input.is_action_just_pressed("ui_accept") and (is_on_floor() || jumpCount > 0):
+			velocity.y = JUMP_VELOCITY
+			jumpCount-=1
+			if !isShooting:
+				anim.play("Jump")
+				
+		var direction = Input.get_axis("ui_left", "ui_right")
+		if direction:
+			if direction == -1:
+				get_node("AnimatedSprite2D").flip_h = true
+				isPointingRight = false
+			elif direction == 1:
+				get_node("AnimatedSprite2D").flip_h = false
+				isPointingRight = true
+			velocity.x = direction * SPEED
+			if velocity.y == 0 && !isShooting:
+				anim.play("Run")
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED)
+			if velocity.y == 0 && !isShooting:
+				anim.play("Idle")
+		if velocity.y > 0 && !dead && !isShooting:
+			anim.play("Fall")
+		
+		if(Input.is_action_just_pressed("Fire") && currentBulletCooldown <= 0):
+			isShooting = true
+			currentBulletCooldown = bulletCooldown
+			var newBullet = bullet.instantiate()
+			gameplay.add_child(newBullet)
+			newBullet.position.x = bulletPoint.global_position.x
+			newBullet.position.y = bulletPoint.global_position.y
+			anim.play("Shoot")
+			await anim.animation_finished
+			isShooting = false
+			
+		if !dead:
+			move_and_slide()
+
+		move_and_slide()
 
 
 func _on_damage_box_body_entered(body):

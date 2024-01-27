@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://c0xbihl6kfm8l"]
+[gd_scene load_steps=31 format=3 uid="uid://c0xbihl6kfm8l"]
 
 [ext_resource type="Texture2D" uid="uid://v7tprt42uy6m" path="res://Sprites/Character/Old hero.png" id="1_ag8gm"]
 [ext_resource type="Script" path="res://player.gd" id="1_nmjc3"]
@@ -202,16 +202,12 @@ tracks/1/keys = {
 "values": [0, 1, 2]
 }
 
-[sub_resource type="Animation" id="Animation_uwo8f"]
-resource_name = "Nothing"
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_78l65"]
 _data = {
 "Die": SubResource("Animation_dv6j8"),
 "Fall": SubResource("Animation_3kgxo"),
 "Idle": SubResource("Animation_hrj4i"),
 "Jump": SubResource("Animation_lalx4"),
-"Nothing": SubResource("Animation_uwo8f"),
 "RESET": SubResource("Animation_gcm3u"),
 "Run": SubResource("Animation_6k14i"),
 "Shoot": SubResource("Animation_2h218")
@@ -314,11 +310,6 @@ animations = [{
 }],
 "loop": true,
 "name": &"Jump",
-"speed": 5.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"Nothing",
 "speed": 5.0
 }, {
 "frames": [{

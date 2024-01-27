@@ -4,6 +4,8 @@ var paused = false
 @onready var LevelUpPanel = $UI/LevelUpPanel
 @onready var player = $Player
 @onready var bossHud = $UI/BossHP
+@onready var gameOverHud = $UI/GameOverHud
+@onready var xptallyLabel = $UI/GameOverHud/XPTally
 var PowerUpIndex1 = 1
 var PowerUpIndex2 = 2
 var PowerUpIndex3 = 3
@@ -37,8 +39,13 @@ func _grantPowerUp(index):
 		3:
 			player.bulletCooldown = player.bulletCooldown/2
 	player.nextXP = player.nextXP*2
+	player.level+=1
 	LevelUpPanel.visible = false
 	get_tree().paused = false
 
 func _showBossHud():
 	bossHud.visible = true
+
+func _gameOver():
+	gameOverHud.visible = true
+	xptallyLabel.text = "XP acquired: " + str(player.xp)

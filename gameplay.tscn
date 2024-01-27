@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c202yvemg0spw"]
+[gd_scene load_steps=22 format=3 uid="uid://c202yvemg0spw"]
 
 [ext_resource type="PackedScene" uid="uid://c0xbihl6kfm8l" path="res://player.tscn" id="1_0fxm6"]
 [ext_resource type="Script" path="res://gameplay.gd" id="1_m4jxv"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://d1sqkef75r3m2" path="res://Sprites/black.png" id="7_5vkda"]
 [ext_resource type="PackedScene" uid="uid://dtd25jm2xcf4k" path="res://moving_platform.tscn" id="9_qdffp"]
 [ext_resource type="Script" path="res://PowerUpSelectButton.gd" id="9_y6jaa"]
+[ext_resource type="Script" path="res://GameOverHud.gd" id="10_nujua"]
 [ext_resource type="PackedScene" uid="uid://cmq1intcs1dw3" path="res://boss_enemy.tscn" id="13_8a5fx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q0irt"]
@@ -1060,6 +1061,45 @@ max_value = 2000.0
 step = 1.0
 show_percentage = false
 
+[node name="GameOverHud" type="Node2D" parent="UI"]
+visible = false
+script = ExtResource("10_nujua")
+
+[node name="TextureRect" type="TextureRect" parent="UI/GameOverHud"]
+offset_left = 183.0
+offset_top = 156.0
+offset_right = 899.0
+offset_bottom = 548.0
+texture = ExtResource("7_5vkda")
+
+[node name="YouDied" type="Label" parent="UI/GameOverHud"]
+z_index = 1
+offset_left = 457.0
+offset_top = 200.0
+offset_right = 622.0
+offset_bottom = 237.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_omyyo")
+theme_override_font_sizes/font_size = 30
+text = "You died"
+
+[node name="XPTally" type="Label" parent="UI/GameOverHud"]
+z_index = 1
+offset_left = 369.0
+offset_top = 315.0
+offset_right = 492.0
+offset_bottom = 338.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_omyyo")
+text = "XP acquired"
+
+[node name="Button" type="Button" parent="UI/GameOverHud"]
+offset_left = 452.0
+offset_top = 415.0
+offset_right = 617.0
+offset_bottom = 477.0
+text = "To Main Menu"
+
 [node name="MovingPlatform" parent="." instance=ExtResource("9_qdffp")]
 position = Vector2(1707, -1124)
 
@@ -1069,3 +1109,4 @@ position = Vector2(2136, -1183)
 [connection signal="pressed" from="UI/LevelUpPanel/BG/Button" to="UI/LevelUpPanel/BG/Button" method="_on_pressed"]
 [connection signal="pressed" from="UI/LevelUpPanel/BG/Button2" to="UI/LevelUpPanel/BG/Button2" method="_on_pressed"]
 [connection signal="pressed" from="UI/LevelUpPanel/BG/Button3" to="UI/LevelUpPanel/BG/Button3" method="_on_pressed"]
+[connection signal="pressed" from="UI/GameOverHud/Button" to="UI/GameOverHud" method="_on_button_pressed"]

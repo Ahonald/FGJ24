@@ -12,7 +12,7 @@ var moveIndex = 0
 var rng = RandomNumberGenerator.new()
 var posDist
 
-var dashVelocity = 250
+var dashVelocity = 500
 
 @onready var LeftHandPosition = $LeftHandPosition
 @onready var RightHandPosition = $RightHandPosition
@@ -324,7 +324,7 @@ func _doBossLogic():
 					isWaitingForNextMove = true
 					
 		else:
-			await get_tree().create_timer(1).timeout
+			await get_tree().create_timer(0.1).timeout
 			isWaitingForNextMove = false
 
 	
