@@ -6,6 +6,7 @@ var paused = false
 @onready var bossHud = $UI/BossHP
 @onready var gameOverHud = $UI/GameOverHud
 @onready var xptallyLabel = $UI/GameOverHud/XPTally
+
 var PowerUpIndex1 = 1
 var PowerUpIndex2 = 2
 var PowerUpIndex3 = 3
@@ -30,21 +31,29 @@ func _input(event):
 func _levelUp():
 	get_tree().paused = true
 	LevelUpPanel.visible = true
-	PowerUpIndex1 = int(rng.randf_range(0, 3))
-	PowerUpIndex2 = int(rng.randf_range(0, 3))
-	PowerUpIndex3 = int(rng.randf_range(0, 3))
-	
+	PowerUpIndex1 = int(rng.randf_range(0, 4))
+	PowerUpIndex2 = int(rng.randf_range(0, 4))
+	while PowerUpIndex1 == PowerUpIndex2:
+		PowerUpIndex2 = int(rng.randf_range(0, 4))
+	PowerUpIndex3 = int(rng.randf_range(0, 4))
+	while PowerUpIndex3 == PowerUpIndex2 || PowerUpIndex3 == PowerUpIndex1:
+		PowerUpIndex3 = int(rng.randf_range(0, 4))
 	LevelUpPanel._levelUpPanelOpened(PowerUpIndex1,PowerUpIndex2,PowerUpIndex3)
 
 func _grantPowerUp(index):
 	match index:
-		1:
+		0:
 			player.maxJumpCount+=1
-		2:
+		1:
 			player.SPEED+= 100
-		3:
+		2:
 			player.bulletCooldown = player.bulletCooldown/2
-	player.nextXP = player.nextXP*2
+		3:
+			player.maxHealth+=10
+			player.health = player.maxHealth
+		4:
+			player.bulletCount+=1
+	player.nextXP = int(player.nextXP*2)
 	player.level+=1
 	LevelUpPanel.visible = false
 	get_tree().paused = false

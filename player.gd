@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 var health = 100
+var maxHealth = 100
 var xp = 0
 var level = 1
 var nextXP = 50
@@ -8,8 +9,10 @@ var die = false
 
 var SPEED = 125.0
 const JUMP_VELOCITY = -250.0
+
 var bulletCooldown = 60
 var currentBulletCooldown = 0
+var bulletCount = 1
 
 var maxJumpCount = 2
 var jumpCount = 2
@@ -18,7 +21,16 @@ var jumpCount = 2
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-var bulletPoint
+@onready var bulletPoint = $BulletSpawnPoint
+@onready var bulletPoint2 = $BulletSpawnPoint2
+@onready var bulletPoint3 = $BulletSpawnPoint3
+@onready var bulletPoint4 = $BulletSpawnPoint4
+@onready var bulletPoint5 = $BulletSpawnPoint5
+@onready var bulletPoint6 = $BulletSpawnPoint6
+@onready var bulletPoint7 = $BulletSpawnPoint7
+@onready var bulletPoint8 = $BulletSpawnPoint8
+
+
 var audio
 var dead
 var isShooting
@@ -39,14 +51,13 @@ var isPointingRight
 func _ready():
 	anim.play("Idle")
 	audio = get_node("PlayerAudio")
-	bulletPoint = get_node("BulletSpawnPoint")
 	gameplay = $".."
 	xpBar.max_value = float(nextXP)
 	dead = false
 
 func _physics_process(delta):
 	hpBar.value = health
-	hpLabel.text = str(health) + "/100"
+	hpLabel.text = str(health) + "/" + str(maxHealth)
 	xpBar.value = xp
 	xpLabel.text = "to next: " + str(nextXP-xp)
 	lvlLabel.text = "LVL " + str(level)
@@ -97,10 +108,48 @@ func _physics_process(delta):
 		if(Input.is_action_just_pressed("Fire") && currentBulletCooldown <= 0):
 			isShooting = true
 			currentBulletCooldown = bulletCooldown
+			
 			var newBullet = bullet.instantiate()
 			gameplay.add_child(newBullet)
 			newBullet.position.x = bulletPoint.global_position.x
 			newBullet.position.y = bulletPoint.global_position.y
+			
+			if(bulletCount >= 2):
+				newBullet = bullet.instantiate()
+				gameplay.add_child(newBullet)
+				newBullet.position.x = bulletPoint2.global_position.x
+				newBullet.position.y = bulletPoint2.global_position.y
+			if(bulletCount >= 3):
+				newBullet = bullet.instantiate()
+				gameplay.add_child(newBullet)
+				newBullet.position.x = bulletPoint3.global_position.x
+				newBullet.position.y = bulletPoint3.global_position.y
+			if(bulletCount >= 4):
+				newBullet = bullet.instantiate()
+				gameplay.add_child(newBullet)
+				newBullet.position.x = bulletPoint4.global_position.x
+				newBullet.position.y = bulletPoint4.global_position.y
+			if(bulletCount >= 5):
+				newBullet = bullet.instantiate()
+				gameplay.add_child(newBullet)
+				newBullet.position.x = bulletPoint5.global_position.x
+				newBullet.position.y = bulletPoint5.global_position.y
+			if(bulletCount >= 6):
+				newBullet = bullet.instantiate()
+				gameplay.add_child(newBullet)
+				newBullet.position.x = bulletPoint6.global_position.x
+				newBullet.position.y = bulletPoint6.global_position.y
+			if(bulletCount >= 7):
+				newBullet = bullet.instantiate()
+				gameplay.add_child(newBullet)
+				newBullet.position.x = bulletPoint7.global_position.x
+				newBullet.position.y = bulletPoint7.global_position.y
+			if(bulletCount >= 8):
+				newBullet = bullet.instantiate()
+				gameplay.add_child(newBullet)
+				newBullet.position.x = bulletPoint8.global_position.x
+				newBullet.position.y = bulletPoint8.global_position.y
+				
 			anim.play("Shoot")
 			await anim.animation_finished
 			isShooting = false

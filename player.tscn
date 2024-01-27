@@ -395,6 +395,27 @@ zoom = Vector2(2, 2)
 [node name="BulletSpawnPoint" type="Node2D" parent="."]
 position = Vector2(8, 0)
 
+[node name="BulletSpawnPoint2" type="Node2D" parent="."]
+position = Vector2(10, -8)
+
+[node name="BulletSpawnPoint3" type="Node2D" parent="."]
+position = Vector2(10, 5)
+
+[node name="BulletSpawnPoint4" type="Node2D" parent="."]
+position = Vector2(21, -11)
+
+[node name="BulletSpawnPoint5" type="Node2D" parent="."]
+position = Vector2(21, 7)
+
+[node name="BulletSpawnPoint6" type="Node2D" parent="."]
+position = Vector2(18, -1)
+
+[node name="BulletSpawnPoint7" type="Node2D" parent="."]
+position = Vector2(29, -7)
+
+[node name="BulletSpawnPoint8" type="Node2D" parent="."]
+position = Vector2(30, 3)
+
 [node name="DamageBox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageBox"]
