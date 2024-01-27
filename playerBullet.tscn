@@ -1,16 +1,16 @@
 [gd_scene load_steps=4 format=3 uid="uid://bx2kf7upyj2uw"]
 
-[ext_resource type="Texture2D" uid="uid://3d4h6bwah5h4" path="res://Sprites/Character/Sprite-0004.png" id="1_cgdvy"]
-[ext_resource type="Script" path="res://playerbullet.gd" id="2_0hd18"]
+[ext_resource type="Script" path="res://playerbullet.gd" id="1_brhqh"]
+[ext_resource type="Texture2D" uid="uid://3d4h6bwah5h4" path="res://Sprites/Character/Sprite-0004.png" id="2_i7q3v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dt1gq"]
 size = Vector2(5, 8)
 
-[node name="Bullet" type="Node2D"]
-script = ExtResource("2_0hd18")
+[node name="PlayerBullet" type="Node2D"]
+script = ExtResource("1_brhqh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_cgdvy")
+texture = ExtResource("2_i7q3v")
 
 [node name="Area2D" type="Area2D" parent="."]
 

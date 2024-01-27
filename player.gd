@@ -16,7 +16,7 @@ var gameplay
 var isPointingRight
 
 @onready var anim = get_node("AnimationPlayer") 
-@onready var bullet = preload("res://bullet.tscn")
+@onready var bullet = preload("res://playerBullet.tscn")
 @onready var rb = $RigidBody2D
 
 func _ready():
@@ -75,7 +75,7 @@ func _physics_process(delta):
 
 func _on_damage_box_body_entered(body):
 	print(body.get_name())
-	if(body.get_name().contains("Slime") && body.die == false) :
+	if(body.get_name().contains("Enemy") && body.die == false) :
 		if(isPointingRight):
 			velocity.y = JUMP_VELOCITY
 			velocity.x = JUMP_VELOCITY
@@ -83,3 +83,9 @@ func _on_damage_box_body_entered(body):
 			velocity.y = JUMP_VELOCITY
 			velocity.x = -JUMP_VELOCITY
 		body.die = true
+
+
+func _on_damage_box_area_entered(area):
+	print(area.get_name())
+	if(area.get_name().contains("Enemy") && area.get_parent().die == false) :
+		area.get_parent().die = true
