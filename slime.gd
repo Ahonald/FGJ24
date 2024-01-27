@@ -15,16 +15,21 @@ var jumpSide
 var jumpCD = 0
 var die = false
 var detectionArea
+var detectionCollision
+var collision
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	player = $"../Player"
 	detectionArea = $DetectionArea/CollisionShape2D
-
-
+	collision = $CollisionShape2D
+	detectionCollision =  $DetectionArea/CollisionShape2D
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if(die):
 		detectionArea.set_process(false)
+		collision.disabled = true
+		detectionCollision.set_process(false)
 		anim.play("Die")
 		velocity.y = 0
 		velocity.x = 0
