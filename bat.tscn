@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://76p3om2v567b"]
+[gd_scene load_steps=15 format=3 uid="uid://76p3om2v567b"]
 
 [ext_resource type="Texture2D" uid="uid://c868dhfqd2v0u" path="res://Sprites/Bat/bat.32x32.png" id="1_3ujv0"]
 [ext_resource type="Script" path="res://bat.gd" id="1_34scp"]
@@ -85,6 +85,11 @@ region = Rect2(128, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4shs8"]
 animations = [{
+"frames": [],
+"loop": true,
+"name": &"Die",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_22kme")
@@ -107,12 +112,15 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t82tc"]
-size = Vector2(26, 23)
+size = Vector2(22, 23)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_slmp7"]
 size = Vector2(146, 108)
 
-[node name="Bat" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oretb"]
+size = Vector2(22, 23)
+
+[node name="BatEnemy" type="CharacterBody2D"]
 script = ExtResource("1_34scp")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -125,7 +133,7 @@ sprite_frames = SubResource("SpriteFrames_4shs8")
 animation = &"Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-3, -4.5)
+position = Vector2(-5, -4.5)
 shape = SubResource("RectangleShape2D_t82tc")
 
 [node name="DetectionArea" type="Area2D" parent="."]
@@ -145,5 +153,13 @@ position = Vector2(10, 9)
 [node name="BulletSpawnPoint3" type="Node2D" parent="."]
 position = Vector2(-15, 9)
 
+[node name="HitBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(-5, -4.5)
+shape = SubResource("RectangleShape2D_oretb")
+
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
+[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
+[connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]

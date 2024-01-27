@@ -156,4 +156,5 @@ sprite_frames = SubResource("SpriteFrames_im0yf")
 animation = &"Explode"
 autoplay = "Exist"
 
+[connection signal="area_entered" from="EnemyBulletArea" to="." method="_on_enemy_bullet_area_area_entered"]
 [connection signal="body_entered" from="EnemyBulletArea" to="." method="_on_enemy_bullet_area_body_entered"]

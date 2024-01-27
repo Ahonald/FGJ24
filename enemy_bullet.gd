@@ -23,6 +23,7 @@ func _process(delta):
 		position.y += travel * dirY	
 		travelledDistance += travel
 	if(travelledDistance > MaxDistance || die):
+		die = true
 		anim.play("Explode")
 		await get_tree().create_timer(0.6).timeout
 		queue_free()

@@ -86,6 +86,5 @@ func _on_damage_box_body_entered(body):
 
 
 func _on_damage_box_area_entered(area):
-	print(area.get_name())
 	if(area.get_name().contains("Enemy") && area.get_parent().die == false) :
 		area.get_parent().die = true
