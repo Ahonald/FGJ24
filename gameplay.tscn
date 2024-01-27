@@ -1,9 +1,11 @@
-[gd_scene load_steps=27 format=3 uid="uid://c202yvemg0spw"]
+[gd_scene load_steps=29 format=3 uid="uid://c202yvemg0spw"]
 
 [ext_resource type="PackedScene" uid="uid://c0xbihl6kfm8l" path="res://player.tscn" id="1_0fxm6"]
 [ext_resource type="Script" path="res://gameplay.gd" id="1_m4jxv"]
 [ext_resource type="Texture2D" uid="uid://dlegl8a6otekn" path="res://Sprites/Ground and Terrain/Lvl1Ground.png" id="1_uniq1"]
+[ext_resource type="Texture2D" uid="uid://csv572lo4314x" path="res://Sprites/Background/NightSkyBLACKBG.png" id="2_ltun7"]
 [ext_resource type="Texture2D" uid="uid://cy1jupbw7upg1" path="res://Sprites/Ground and Terrain/GroundSheetPurple32x32.png" id="3_hv7vg"]
+[ext_resource type="Texture2D" uid="uid://d31brtmjydlu8" path="res://Sprites/Background/NightSky.png" id="3_oh3cd"]
 [ext_resource type="FontFile" uid="uid://dkusyemblufbm" path="res://Fonts/Sabo-Filled.otf" id="3_omyyo"]
 [ext_resource type="PackedScene" uid="uid://cv5ljghmg7wxw" path="res://slime.tscn" id="4_6itfw"]
 [ext_resource type="Texture2D" uid="uid://26jmcdr0aqe5" path="res://Sprites/Enviromental/Misc.png" id="4_y0pm4"]
@@ -836,6 +838,23 @@ bg_color = Color(1, 0, 0, 1)
 [node name="Gameplay" type="Node2D"]
 process_mode = 3
 script = ExtResource("1_m4jxv")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="SpaceDark" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/SpaceDark"]
+texture = ExtResource("2_ltun7")
+centered = false
+
+[node name="SpaceSky" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1152, 648)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/SpaceSky"]
+texture_filter = 1
+texture = ExtResource("3_oh3cd")
+centered = false
 
 [node name="Player" parent="." instance=ExtResource("1_0fxm6")]
 process_mode = 1
