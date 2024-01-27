@@ -3,6 +3,7 @@ var paused = false
 
 @onready var LevelUpPanel = $UI/LevelUpPanel
 @onready var player = $Player
+@onready var bossHud = $UI/BossHP
 var PowerUpIndex1 = 1
 var PowerUpIndex2 = 2
 var PowerUpIndex3 = 3
@@ -39,3 +40,5 @@ func _grantPowerUp(index):
 	LevelUpPanel.visible = false
 	get_tree().paused = false
 
+func _showBossHud():
+	bossHud.visible = true

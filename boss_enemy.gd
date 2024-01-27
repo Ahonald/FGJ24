@@ -1,5 +1,8 @@
 extends CharacterBody2D
 
+var hp = 2000
+@onready var hpBar = $"../UI/BossHP/BossHPBar"
+
 @onready var gameplay = $".."
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
@@ -326,6 +329,7 @@ func _doBossLogic():
 
 	
 func _physics_process(delta):
+	hpBar.value = hp
 	if(isDashing):
 		if(moveIndex == 0):
 			if(global_position.x < rightPos.x):
@@ -358,3 +362,6 @@ func _physics_process(delta):
 				isDashing = false
 				isPerformingMove = false
 				isWaitingForNextMove = true
+
+func _takeDamage(dmg):
+	hp-=dmg
