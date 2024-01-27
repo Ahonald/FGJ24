@@ -43,6 +43,10 @@ func _levelUpPanelOpened(powerUpIndex1, powerUpIndex2, powerUpIndex3):
 			powerUpHeader1.text = "Big gun"
 			powerUpDescription1.text = "Increases the amount of bullet you can fire at once"
 			pass
+		5: 
+			powerUpHeader1.text = "Pun-laced bullets"
+			powerUpDescription1.text = "Increases the amount of damage your funny ass bullets do"
+			pass
 	match powerUpIndex2:
 		0:
 			powerUpHeader2.text = "Increased hops"
@@ -63,6 +67,10 @@ func _levelUpPanelOpened(powerUpIndex1, powerUpIndex2, powerUpIndex3):
 		4:
 			powerUpHeader2.text = "Big gun"
 			powerUpDescription2.text = "Increases the amount of bullet you can fire at once"
+			pass
+		5: 
+			powerUpHeader2.text = "Pun-laced bullets"
+			powerUpDescription2.text = "Increases the amount of damage your funny ass bullets do"
 			pass
 	match powerUpIndex3:
 		0:
@@ -85,6 +93,9 @@ func _levelUpPanelOpened(powerUpIndex1, powerUpIndex2, powerUpIndex3):
 			powerUpHeader3.text = "Big gun"
 			powerUpDescription3.text = "Increases the amount of bullet you can fire at once"
 			pass	
+		5: 
+			powerUpHeader3.text = "Pun-laced bullets"
+			powerUpDescription3.text = "Increases the amount of damage your funny ass bullets do"
 	Button1.powerUpIndex = powerUpIndex1
 	Button2.powerUpIndex = powerUpIndex2
 	Button3.powerUpIndex = powerUpIndex3

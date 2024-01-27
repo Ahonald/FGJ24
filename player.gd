@@ -13,6 +13,7 @@ const JUMP_VELOCITY = -250.0
 var bulletCooldown = 60
 var currentBulletCooldown = 0
 var bulletCount = 1
+var bulletDamage = 5
 
 var maxJumpCount = 2
 var jumpCount = 2
@@ -113,42 +114,50 @@ func _physics_process(delta):
 			gameplay.add_child(newBullet)
 			newBullet.position.x = bulletPoint.global_position.x
 			newBullet.position.y = bulletPoint.global_position.y
+			newBullet.dmgValue = bulletDamage
 			
 			if(bulletCount >= 2):
 				newBullet = bullet.instantiate()
 				gameplay.add_child(newBullet)
 				newBullet.position.x = bulletPoint2.global_position.x
 				newBullet.position.y = bulletPoint2.global_position.y
+				newBullet.dmgValue = bulletDamage
 			if(bulletCount >= 3):
 				newBullet = bullet.instantiate()
 				gameplay.add_child(newBullet)
 				newBullet.position.x = bulletPoint3.global_position.x
 				newBullet.position.y = bulletPoint3.global_position.y
+				newBullet.dmgValue = bulletDamage
 			if(bulletCount >= 4):
 				newBullet = bullet.instantiate()
 				gameplay.add_child(newBullet)
 				newBullet.position.x = bulletPoint4.global_position.x
 				newBullet.position.y = bulletPoint4.global_position.y
+				newBullet.dmgValue = bulletDamage
 			if(bulletCount >= 5):
 				newBullet = bullet.instantiate()
 				gameplay.add_child(newBullet)
 				newBullet.position.x = bulletPoint5.global_position.x
 				newBullet.position.y = bulletPoint5.global_position.y
+				newBullet.dmgValue = bulletDamage
 			if(bulletCount >= 6):
 				newBullet = bullet.instantiate()
 				gameplay.add_child(newBullet)
 				newBullet.position.x = bulletPoint6.global_position.x
 				newBullet.position.y = bulletPoint6.global_position.y
+				newBullet.dmgValue = bulletDamage
 			if(bulletCount >= 7):
 				newBullet = bullet.instantiate()
 				gameplay.add_child(newBullet)
 				newBullet.position.x = bulletPoint7.global_position.x
 				newBullet.position.y = bulletPoint7.global_position.y
+				newBullet.dmgValue = bulletDamage
 			if(bulletCount >= 8):
 				newBullet = bullet.instantiate()
 				gameplay.add_child(newBullet)
 				newBullet.position.x = bulletPoint8.global_position.x
 				newBullet.position.y = bulletPoint8.global_position.y
+				newBullet.dmgValue = bulletDamage
 				
 			anim.play("Shoot")
 			await anim.animation_finished

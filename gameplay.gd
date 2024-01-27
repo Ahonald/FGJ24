@@ -53,6 +53,9 @@ func _grantPowerUp(index):
 			player.health = player.maxHealth
 		4:
 			player.bulletCount+=1
+		5:
+			player.bulletDamge+=1
+			
 	player.nextXP = int(player.nextXP*2)
 	player.level+=1
 	LevelUpPanel.visible = false
