@@ -16,12 +16,12 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	anim.play("Exist")
-	var travel = MaxSpeed*delta
-	position.x += travel * dirX
-	position.y += travel * dirY
-	
-	travelledDistance += travel
+	if(!die):
+		anim.play("Exist")
+		var travel = MaxSpeed*delta
+		position.x += travel * dirX
+		position.y += travel * dirY	
+		travelledDistance += travel
 	if(travelledDistance > MaxDistance || die):
 		anim.play("Explode")
 		await get_tree().create_timer(0.6).timeout
@@ -29,6 +29,7 @@ func _process(delta):
 
 
 func _on_enemy_bullet_area_body_entered(body):
+	if(!body.name.contains("Bat")):
 		anim.play("Explode")
 		await get_tree().create_timer(0.6).timeout
 		queue_free() # Replace with function body.
