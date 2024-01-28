@@ -395,12 +395,15 @@ zoom = Vector2(2, 2)
 
 [node name="PlayerHurt" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_gkwpg")
+bus = &"SFX"
 
 [node name="PlayerShoot" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_e6j7k")
+bus = &"SFX"
 
 [node name="PlayerJump" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_siut1")
+bus = &"SFX"
 
 [node name="BulletSpawnPoint" type="Node2D" parent="."]
 position = Vector2(8, 0)

@@ -32,6 +32,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var bulletPoint8 = $BulletSpawnPoint8
 
 
+
 var dead
 var isShooting
 var isPointingRight

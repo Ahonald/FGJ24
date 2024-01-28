@@ -5,6 +5,9 @@ var maxHp = 2000
 var dmg = 10
 @onready var hpBar = $"../UI/BossHP/BossHPBar"
 
+@onready var bulletsfx = $BulletSFX
+@onready var bosstp = $BossTP
+
 @onready var gameplay = $".."
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
@@ -71,9 +74,11 @@ func _doBossLogic():
 					0:
 						global_position = leftPos
 						isDashing = true
+						bosstp.play()
 					1:
 						global_position  = leftPos
 						var newBullet = bullet.instantiate()
+						bulletsfx.play()
 						gameplay.add_child(newBullet)
 						newBullet.dirX = 1
 						newBullet.dirY = 0
@@ -138,6 +143,7 @@ func _doBossLogic():
 					2:
 						global_position = rightPos
 						var newBullet = bullet.instantiate()
+						bulletsfx.play()
 						gameplay.add_child(newBullet)
 						newBullet.dirX = -1
 						newBullet.dirY = 0
@@ -202,15 +208,19 @@ func _doBossLogic():
 					3:
 						global_position = rightPos
 						isDashing = true
+						bosstp.play()
 					4:
 						global_position = rightHighPos
 						isDashing = true
+						bosstp.play()
 					5:
 						global_position = leftHighPos
 						isDashing = true
+						bosstp.play()
 					6:
 						global_position = rightHighPos
 						var newBullet = bullet.instantiate()
+						bulletsfx.play()
 						gameplay.add_child(newBullet)
 						newBullet.dirX = -1
 						newBullet.dirY = 0
@@ -275,6 +285,7 @@ func _doBossLogic():
 					7:
 						global_position = leftHighPos
 						var newBullet = bullet.instantiate()
+						bulletsfx.play()
 						gameplay.add_child(newBullet)
 						newBullet.dirX = 1
 						newBullet.dirY = 0

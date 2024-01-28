@@ -4,11 +4,11 @@
 [ext_resource type="Script" path="res://gameplay.gd" id="1_m4jxv"]
 [ext_resource type="Texture2D" uid="uid://dlegl8a6otekn" path="res://Sprites/Ground and Terrain/Lvl1Ground.png" id="1_uniq1"]
 [ext_resource type="Texture2D" uid="uid://csv572lo4314x" path="res://Sprites/Background/NightSkyBLACKBG.png" id="2_ltun7"]
-[ext_resource type="Texture2D" uid="uid://cy1jupbw7upg1" path="res://Sprites/Ground and Terrain/GroundSheetPurple32x32.png" id="3_hv7vg"]
+[ext_resource type="Texture2D" uid="uid://b5kbd4oylg6v" path="res://Sprites/Ground and Terrain/GroundSheetPurple32x32.png" id="3_hv7vg"]
 [ext_resource type="Texture2D" uid="uid://d31brtmjydlu8" path="res://Sprites/Background/NightSky.png" id="3_oh3cd"]
 [ext_resource type="FontFile" uid="uid://dkusyemblufbm" path="res://Fonts/Sabo-Filled.otf" id="3_omyyo"]
 [ext_resource type="PackedScene" uid="uid://cv5ljghmg7wxw" path="res://slime.tscn" id="4_6itfw"]
-[ext_resource type="Texture2D" uid="uid://26jmcdr0aqe5" path="res://Sprites/Enviromental/Misc.png" id="4_y0pm4"]
+[ext_resource type="Texture2D" uid="uid://c6l0d473r75i" path="res://Sprites/Enviromental/Misc.png" id="4_y0pm4"]
 [ext_resource type="Script" path="res://LevelUpPanel.gd" id="7_1b24v"]
 [ext_resource type="Texture2D" uid="uid://d1sqkef75r3m2" path="res://Sprites/black.png" id="7_5vkda"]
 [ext_resource type="PackedScene" uid="uid://dtd25jm2xcf4k" path="res://moving_platform.tscn" id="9_qdffp"]
@@ -22,7 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://76p3om2v567b" path="res://bat.tscn" id="19_jjhhq"]
 [ext_resource type="PackedScene" uid="uid://b27md0v3h5q5c" path="res://death_zone.tscn" id="20_8juij"]
 [ext_resource type="PackedScene" uid="uid://cmq1intcs1dw3" path="res://boss_enemy.tscn" id="22_7gldg"]
-[ext_resource type="AudioStream" uid="uid://clj1bxlxpsvc8" path="res://Audio/Music/GobboLevel.wav" id="22_48ncx"]
+[ext_resource type="AudioStream" uid="uid://ckj8r0tb3mado" path="res://Audio/Music/GobboLevel.wav" id="22_48ncx"]
 [ext_resource type="PackedScene" uid="uid://cn6k13e40vhrt" path="res://boss_door.tscn" id="23_65abd"]
 [ext_resource type="AudioStream" uid="uid://bo68xakdqekcq" path="res://Audio/Music/VSGamedevGuyWithINTRO.ogg" id="23_qb1af"]
 [ext_resource type="PackedScene" uid="uid://db7bj8iwyt863" path="res://boss_trigger.tscn" id="24_da2o5"]
@@ -1604,6 +1604,7 @@ bus = &"Music"
 
 [node name="BossMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("23_qb1af")
+volume_db = 6.455
 bus = &"Music"
 
 [node name="BossDoor" parent="." instance=ExtResource("23_65abd")]
