@@ -13,6 +13,7 @@ var paused = false
 @onready var completeXPTally =$UI/GameCompleteHud/TextureRect/XPTally
 @onready var toMainMenuButton = $UI/GameCompleteHud/TextureRect/MenuButton
 
+
 var PowerUpIndex1 = 1
 var PowerUpIndex2 = 2
 var PowerUpIndex3 = 3
@@ -88,3 +89,4 @@ func _completeGame():
 
 func _on_menu_button_pressed():
 	get_tree().change_scene_to_file("res://main_menu.tscn")
+

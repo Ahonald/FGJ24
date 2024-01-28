@@ -1,9 +1,13 @@
 extends Node2D
-
 @onready var bossDoor = $"../BossDoor"
 @onready var gameplay = $".."
 @onready var player = $"../Player"
 @onready var boss = $"../BossEnemy"
+
+@onready var areamusic = $"../AreaMusic"
+@onready var bossmusic = $"../BossMusic"
+
+
 func _ready():
 	bossDoor.visible = false
 	bossDoor.process_mode = Node.PROCESS_MODE_DISABLED  # Replace with function body.
@@ -16,6 +20,8 @@ func _process(delta):
 
 func _on_area_2d_body_entered(body):
 	if(body.name == "Player"):
+		areamusic.stop()
+		bossmusic.play()
 		boss.process_mode = Node.PROCESS_MODE_INHERIT
 		bossDoor.visible = true
 		bossDoor.process_mode = Node.PROCESS_MODE_INHERIT
