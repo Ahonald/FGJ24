@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 var hp = 2000
+var dmg = 10
 @onready var hpBar = $"../UI/BossHP/BossHPBar"
 
 @onready var gameplay = $".."
@@ -25,6 +26,11 @@ var leftPos
 var rightHighPos
 var leftHighPos
 
+var entry = true
+var entryTime = 0
+var entryMaxTime = 8
+var entrySpeed = 25
+
 @onready var bullet = preload("res://enemy_bullet_redbullet.tscn")
 @onready var RHB1 = $RightHandBullets/RHB
 @onready var RHB2 = $RightHandBullets/RHB2
@@ -39,297 +45,299 @@ var leftHighPos
 @onready var LHB5 = $LeftHandBullets/LHB5
 @onready var LHB6 = $LeftHandBullets/LHB6
 
-var isDashing
+var isDashing = false
 
 func _ready():
-	leftPos = LeftHandPosition.global_position
-	rightPos = RightHandPosition.global_position
-	leftHighPos = LeftHandHighPosition.global_position
-	rightHighPos = RightHandHighPosition.global_position
-	_doBossLogic()
+	pass
+	#leftPos = LeftHandPosition.global_position
+	#rightPos = RightHandPosition.global_position
+	#leftHighPos = LeftHandHighPosition.global_position
+	#rightHighPos = RightHandHighPosition.global_position
+	#_doBossLogic()
 	
 func _doBossLogic():
-	while true:
-		if(!isWaitingForNextMove && !isDashing):
-			moveIndex = int(rng.randf_range(0, 8))
-			isPerformingMove = true
-			match moveIndex:
-				0:
-					global_position = leftPos
-					isDashing = true
-				1:
-					global_position  = leftPos
-					var newBullet = bullet.instantiate()
-					gameplay.add_child(newBullet)
-					newBullet.dirX = 1
-					newBullet.dirY = 0
-					newBullet.MaxSpeed = 400
-					newBullet.MaxDistance = 2000
-					newBullet.hasdeathAnim = false
-					newBullet.position.x = RHB1.global_position.x 
-					newBullet.position.y = RHB1.global_position.y
-					
-					newBullet = bullet.instantiate()
-					gameplay.add_child(newBullet)
-					newBullet.dirX = 1
-					newBullet.dirY = 0
-					newBullet.MaxSpeed = 800
-					newBullet.MaxDistance = 2000
-					newBullet.hasdeathAnim = false
-					newBullet.position.x = RHB2.global_position.x 
-					newBullet.position.y = RHB2.global_position.y
+		while true:
+			if(!isWaitingForNextMove && !isDashing):
+				moveIndex = int(rng.randf_range(0, 8))
+				isPerformingMove = true
+				match moveIndex:
+					0:
+						global_position = leftPos
+						isDashing = true
+					1:
+						global_position  = leftPos
+						var newBullet = bullet.instantiate()
+						gameplay.add_child(newBullet)
+						newBullet.dirX = 1
+						newBullet.dirY = 0
+						newBullet.MaxSpeed = 400
+						newBullet.MaxDistance = 2000
+						newBullet.hasdeathAnim = false
+						newBullet.position.x = RHB1.global_position.x 
+						newBullet.position.y = RHB1.global_position.y
+						
+						newBullet = bullet.instantiate()
+						gameplay.add_child(newBullet)
+						newBullet.dirX = 1
+						newBullet.dirY = 0
+						newBullet.MaxSpeed = 800
+						newBullet.MaxDistance = 2000
+						newBullet.hasdeathAnim = false
+						newBullet.position.x = RHB2.global_position.x 
+						newBullet.position.y = RHB2.global_position.y
+												
+						newBullet = bullet.instantiate()
+						gameplay.add_child(newBullet)
+						newBullet.dirX = 1
+						newBullet.dirY = 0
+						newBullet.MaxSpeed = 400
+						newBullet.MaxDistance = 2000
+						newBullet.hasdeathAnim = false
+						newBullet.position.x = RHB3.global_position.x 
+						newBullet.position.y = RHB3.global_position.y
+												
+						newBullet = bullet.instantiate()
+						gameplay.add_child(newBullet)
+						newBullet.dirX = 1
+						newBullet.dirY = 0
+						newBullet.MaxSpeed = 800
+						newBullet.MaxDistance = 2000
+						newBullet.hasdeathAnim = false
+						newBullet.position.x = RHB4.global_position.x 
+						newBullet.position.y = RHB4.global_position.y	
 											
-					newBullet = bullet.instantiate()
-					gameplay.add_child(newBullet)
-					newBullet.dirX = 1
-					newBullet.dirY = 0
-					newBullet.MaxSpeed = 400
-					newBullet.MaxDistance = 2000
-					newBullet.hasdeathAnim = false
-					newBullet.position.x = RHB3.global_position.x 
-					newBullet.position.y = RHB3.global_position.y
+						newBullet = bullet.instantiate()
+						gameplay.add_child(newBullet)
+						newBullet.dirX = 1
+						newBullet.dirY = 0
+						newBullet.MaxSpeed = 400
+						newBullet.MaxDistance = 2000
+						newBullet.hasdeathAnim = false
+						newBullet.position.x = RHB5.global_position.x 
+						newBullet.position.y = RHB5.global_position.y
+												
+						newBullet = bullet.instantiate()
+						gameplay.add_child(newBullet)
+						newBullet.dirX = 1
+						newBullet.dirY = 0
+						newBullet.MaxSpeed = 800
+						newBullet.MaxDistance = 2000
+						newBullet.hasdeathAnim = false
+						newBullet.position.x = RHB6.global_position.x 
+						newBullet.position.y = RHB6.global_position.y	
+						
+						isPerformingMove = false
+						isWaitingForNextMove = true
+					2:
+						global_position = rightPos
+						var newBullet = bullet.instantiate()
+						gameplay.add_child(newBullet)
+						newBullet.dirX = -1
+						newBullet.dirY = 0
+						newBullet.MaxSpeed = 400
+						newBullet.MaxDistance = 2000
+						newBullet.hasdeathAnim = false
+						newBullet.position.x = LHB1.global_position.x 
+						newBullet.position.y = LHB1.global_position.y
+						
+						newBullet = bullet.instantiate()
+						gameplay.add_child(newBullet)
+						newBullet.dirX = -1
+						newBullet.dirY = 0
+						newBullet.MaxSpeed = 800
+						newBullet.MaxDistance = 2000
+						newBullet.hasdeathAnim = false
+						newBullet.position.x = LHB2.global_position.x 
+						newBullet.position.y = LHB2.global_position.y
+												
+						newBullet = bullet.instantiate()
+						gameplay.add_child(newBullet)
+						newBullet.dirX = -1
+						newBullet.dirY = 0
+						newBullet.MaxSpeed = 400
+						newBullet.MaxDistance = 2000
+						newBullet.hasdeathAnim = false
+						newBullet.position.x = LHB3.global_position.x 
+						newBullet.position.y = LHB3.global_position.y
+												
+						newBullet = bullet.instantiate()
+						gameplay.add_child(newBullet)
+						newBullet.dirX = -1
+						newBullet.dirY = 0
+						newBullet.MaxSpeed = 800
+						newBullet.MaxDistance = 2000
+						newBullet.hasdeathAnim = false
+						newBullet.position.x = LHB4.global_position.x 
+						newBullet.position.y = LHB4.global_position.y	
 											
-					newBullet = bullet.instantiate()
-					gameplay.add_child(newBullet)
-					newBullet.dirX = 1
-					newBullet.dirY = 0
-					newBullet.MaxSpeed = 800
-					newBullet.MaxDistance = 2000
-					newBullet.hasdeathAnim = false
-					newBullet.position.x = RHB4.global_position.x 
-					newBullet.position.y = RHB4.global_position.y	
-										
-					newBullet = bullet.instantiate()
-					gameplay.add_child(newBullet)
-					newBullet.dirX = 1
-					newBullet.dirY = 0
-					newBullet.MaxSpeed = 400
-					newBullet.MaxDistance = 2000
-					newBullet.hasdeathAnim = false
-					newBullet.position.x = RHB5.global_position.x 
-					newBullet.position.y = RHB5.global_position.y
+						newBullet = bullet.instantiate()
+						gameplay.add_child(newBullet)
+						newBullet.dirX = -1
+						newBullet.dirY = 0
+						newBullet.MaxSpeed = 400
+						newBullet.MaxDistance = 2000
+						newBullet.hasdeathAnim = false
+						newBullet.position.x = LHB5.global_position.x 
+						newBullet.position.y = LHB5.global_position.y
+												
+						newBullet = bullet.instantiate()
+						gameplay.add_child(newBullet)
+						newBullet.dirX = -1
+						newBullet.dirY = 0
+						newBullet.MaxSpeed = 800
+						newBullet.MaxDistance = 2000
+						newBullet.hasdeathAnim = false
+						newBullet.position.x = LHB6.global_position.x 
+						newBullet.position.y = LHB6.global_position.y	
+						
+						isPerformingMove = false
+						isWaitingForNextMove = true
+					3:
+						global_position = rightPos
+						isDashing = true
+					4:
+						global_position = rightHighPos
+						isDashing = true
+					5:
+						global_position = leftHighPos
+						isDashing = true
+					6:
+						global_position = rightHighPos
+						var newBullet = bullet.instantiate()
+						gameplay.add_child(newBullet)
+						newBullet.dirX = -1
+						newBullet.dirY = 0
+						newBullet.MaxSpeed = 800
+						newBullet.MaxDistance = 2000
+						newBullet.hasdeathAnim = false
+						newBullet.position.x = LHB1.global_position.x 
+						newBullet.position.y = LHB1.global_position.y
+						
+						newBullet = bullet.instantiate()
+						gameplay.add_child(newBullet)
+						newBullet.dirX = -1
+						newBullet.dirY = 0
+						newBullet.MaxSpeed = 400
+						newBullet.MaxDistance = 2000
+						newBullet.hasdeathAnim = false
+						newBullet.position.x = LHB2.global_position.x 
+						newBullet.position.y = LHB2.global_position.y
+												
+						newBullet = bullet.instantiate()
+						gameplay.add_child(newBullet)
+						newBullet.dirX = -1
+						newBullet.dirY = 0
+						newBullet.MaxSpeed = 800
+						newBullet.MaxDistance = 2000
+						newBullet.hasdeathAnim = false
+						newBullet.position.x = LHB3.global_position.x 
+						newBullet.position.y = LHB3.global_position.y
+												
+						newBullet = bullet.instantiate()
+						gameplay.add_child(newBullet)
+						newBullet.dirX = -1
+						newBullet.dirY = 0
+						newBullet.MaxSpeed = 400
+						newBullet.MaxDistance = 2000
+						newBullet.hasdeathAnim = false
+						newBullet.position.x = LHB4.global_position.x 
+						newBullet.position.y = LHB4.global_position.y	
 											
-					newBullet = bullet.instantiate()
-					gameplay.add_child(newBullet)
-					newBullet.dirX = 1
-					newBullet.dirY = 0
-					newBullet.MaxSpeed = 800
-					newBullet.MaxDistance = 2000
-					newBullet.hasdeathAnim = false
-					newBullet.position.x = RHB6.global_position.x 
-					newBullet.position.y = RHB6.global_position.y	
-					
-					isPerformingMove = false
-					isWaitingForNextMove = true
-				2:
-					global_position = rightPos
-					var newBullet = bullet.instantiate()
-					gameplay.add_child(newBullet)
-					newBullet.dirX = -1
-					newBullet.dirY = 0
-					newBullet.MaxSpeed = 400
-					newBullet.MaxDistance = 2000
-					newBullet.hasdeathAnim = false
-					newBullet.position.x = LHB1.global_position.x 
-					newBullet.position.y = LHB1.global_position.y
-					
-					newBullet = bullet.instantiate()
-					gameplay.add_child(newBullet)
-					newBullet.dirX = -1
-					newBullet.dirY = 0
-					newBullet.MaxSpeed = 800
-					newBullet.MaxDistance = 2000
-					newBullet.hasdeathAnim = false
-					newBullet.position.x = LHB2.global_position.x 
-					newBullet.position.y = LHB2.global_position.y
+						newBullet = bullet.instantiate()
+						gameplay.add_child(newBullet)
+						newBullet.dirX = -1
+						newBullet.dirY = 0
+						newBullet.MaxSpeed = 800
+						newBullet.MaxDistance = 2000
+						newBullet.hasdeathAnim = false
+						newBullet.position.x = LHB5.global_position.x 
+						newBullet.position.y = LHB5.global_position.y
+												
+						newBullet = bullet.instantiate()
+						gameplay.add_child(newBullet)
+						newBullet.dirX = -1
+						newBullet.dirY = 0
+						newBullet.MaxSpeed = 400
+						newBullet.MaxDistance = 2000
+						newBullet.hasdeathAnim = false
+						newBullet.position.x = LHB6.global_position.x 
+						newBullet.position.y = LHB6.global_position.y	
+						
+						isPerformingMove = false
+						isWaitingForNextMove = true
+					7:
+						global_position = leftHighPos
+						var newBullet = bullet.instantiate()
+						gameplay.add_child(newBullet)
+						newBullet.dirX = 1
+						newBullet.dirY = 0
+						newBullet.MaxSpeed = 800
+						newBullet.MaxDistance = 2000
+						newBullet.hasdeathAnim = false
+						newBullet.position.x = RHB1.global_position.x 
+						newBullet.position.y = RHB1.global_position.y
+						
+						newBullet = bullet.instantiate()
+						gameplay.add_child(newBullet)
+						newBullet.dirX = 1
+						newBullet.dirY = 0
+						newBullet.MaxSpeed = 400
+						newBullet.MaxDistance = 2000
+						newBullet.hasdeathAnim = false
+						newBullet.position.x = RHB2.global_position.x 
+						newBullet.position.y = RHB2.global_position.y
+												
+						newBullet = bullet.instantiate()
+						gameplay.add_child(newBullet)
+						newBullet.dirX = 1
+						newBullet.dirY = 0
+						newBullet.MaxSpeed = 800
+						newBullet.MaxDistance = 2000
+						newBullet.hasdeathAnim = false
+						newBullet.position.x = RHB3.global_position.x 
+						newBullet.position.y = RHB3.global_position.y
+												
+						newBullet = bullet.instantiate()
+						gameplay.add_child(newBullet)
+						newBullet.dirX = 1
+						newBullet.dirY = 0
+						newBullet.MaxSpeed = 400
+						newBullet.MaxDistance = 2000
+						newBullet.hasdeathAnim = false
+						newBullet.position.x = RHB4.global_position.x 
+						newBullet.position.y = RHB4.global_position.y	
 											
-					newBullet = bullet.instantiate()
-					gameplay.add_child(newBullet)
-					newBullet.dirX = -1
-					newBullet.dirY = 0
-					newBullet.MaxSpeed = 400
-					newBullet.MaxDistance = 2000
-					newBullet.hasdeathAnim = false
-					newBullet.position.x = LHB3.global_position.x 
-					newBullet.position.y = LHB3.global_position.y
-											
-					newBullet = bullet.instantiate()
-					gameplay.add_child(newBullet)
-					newBullet.dirX = -1
-					newBullet.dirY = 0
-					newBullet.MaxSpeed = 800
-					newBullet.MaxDistance = 2000
-					newBullet.hasdeathAnim = false
-					newBullet.position.x = LHB4.global_position.x 
-					newBullet.position.y = LHB4.global_position.y	
-										
-					newBullet = bullet.instantiate()
-					gameplay.add_child(newBullet)
-					newBullet.dirX = -1
-					newBullet.dirY = 0
-					newBullet.MaxSpeed = 400
-					newBullet.MaxDistance = 2000
-					newBullet.hasdeathAnim = false
-					newBullet.position.x = LHB5.global_position.x 
-					newBullet.position.y = LHB5.global_position.y
-											
-					newBullet = bullet.instantiate()
-					gameplay.add_child(newBullet)
-					newBullet.dirX = -1
-					newBullet.dirY = 0
-					newBullet.MaxSpeed = 800
-					newBullet.MaxDistance = 2000
-					newBullet.hasdeathAnim = false
-					newBullet.position.x = LHB6.global_position.x 
-					newBullet.position.y = LHB6.global_position.y	
-					
-					isPerformingMove = false
-					isWaitingForNextMove = true
-				3:
-					global_position = rightPos
-					isDashing = true
-				4:
-					global_position = rightHighPos
-					isDashing = true
-				5:
-					global_position = leftHighPos
-					isDashing = true
-				6:
-					global_position = rightHighPos
-					var newBullet = bullet.instantiate()
-					gameplay.add_child(newBullet)
-					newBullet.dirX = -1
-					newBullet.dirY = 0
-					newBullet.MaxSpeed = 800
-					newBullet.MaxDistance = 2000
-					newBullet.hasdeathAnim = false
-					newBullet.position.x = LHB1.global_position.x 
-					newBullet.position.y = LHB1.global_position.y
-					
-					newBullet = bullet.instantiate()
-					gameplay.add_child(newBullet)
-					newBullet.dirX = -1
-					newBullet.dirY = 0
-					newBullet.MaxSpeed = 400
-					newBullet.MaxDistance = 2000
-					newBullet.hasdeathAnim = false
-					newBullet.position.x = LHB2.global_position.x 
-					newBullet.position.y = LHB2.global_position.y
-											
-					newBullet = bullet.instantiate()
-					gameplay.add_child(newBullet)
-					newBullet.dirX = -1
-					newBullet.dirY = 0
-					newBullet.MaxSpeed = 800
-					newBullet.MaxDistance = 2000
-					newBullet.hasdeathAnim = false
-					newBullet.position.x = LHB3.global_position.x 
-					newBullet.position.y = LHB3.global_position.y
-											
-					newBullet = bullet.instantiate()
-					gameplay.add_child(newBullet)
-					newBullet.dirX = -1
-					newBullet.dirY = 0
-					newBullet.MaxSpeed = 400
-					newBullet.MaxDistance = 2000
-					newBullet.hasdeathAnim = false
-					newBullet.position.x = LHB4.global_position.x 
-					newBullet.position.y = LHB4.global_position.y	
-										
-					newBullet = bullet.instantiate()
-					gameplay.add_child(newBullet)
-					newBullet.dirX = -1
-					newBullet.dirY = 0
-					newBullet.MaxSpeed = 800
-					newBullet.MaxDistance = 2000
-					newBullet.hasdeathAnim = false
-					newBullet.position.x = LHB5.global_position.x 
-					newBullet.position.y = LHB5.global_position.y
-											
-					newBullet = bullet.instantiate()
-					gameplay.add_child(newBullet)
-					newBullet.dirX = -1
-					newBullet.dirY = 0
-					newBullet.MaxSpeed = 400
-					newBullet.MaxDistance = 2000
-					newBullet.hasdeathAnim = false
-					newBullet.position.x = LHB6.global_position.x 
-					newBullet.position.y = LHB6.global_position.y	
-					
-					isPerformingMove = false
-					isWaitingForNextMove = true
-				7:
-					global_position = leftHighPos
-					var newBullet = bullet.instantiate()
-					gameplay.add_child(newBullet)
-					newBullet.dirX = 1
-					newBullet.dirY = 0
-					newBullet.MaxSpeed = 800
-					newBullet.MaxDistance = 2000
-					newBullet.hasdeathAnim = false
-					newBullet.position.x = RHB1.global_position.x 
-					newBullet.position.y = RHB1.global_position.y
-					
-					newBullet = bullet.instantiate()
-					gameplay.add_child(newBullet)
-					newBullet.dirX = 1
-					newBullet.dirY = 0
-					newBullet.MaxSpeed = 400
-					newBullet.MaxDistance = 2000
-					newBullet.hasdeathAnim = false
-					newBullet.position.x = RHB2.global_position.x 
-					newBullet.position.y = RHB2.global_position.y
-											
-					newBullet = bullet.instantiate()
-					gameplay.add_child(newBullet)
-					newBullet.dirX = 1
-					newBullet.dirY = 0
-					newBullet.MaxSpeed = 800
-					newBullet.MaxDistance = 2000
-					newBullet.hasdeathAnim = false
-					newBullet.position.x = RHB3.global_position.x 
-					newBullet.position.y = RHB3.global_position.y
-											
-					newBullet = bullet.instantiate()
-					gameplay.add_child(newBullet)
-					newBullet.dirX = 1
-					newBullet.dirY = 0
-					newBullet.MaxSpeed = 400
-					newBullet.MaxDistance = 2000
-					newBullet.hasdeathAnim = false
-					newBullet.position.x = RHB4.global_position.x 
-					newBullet.position.y = RHB4.global_position.y	
-										
-					newBullet = bullet.instantiate()
-					gameplay.add_child(newBullet)
-					newBullet.dirX = 1
-					newBullet.dirY = 0
-					newBullet.MaxSpeed = 800
-					newBullet.MaxDistance = 2000
-					newBullet.hasdeathAnim = false
-					newBullet.position.x = RHB5.global_position.x 
-					newBullet.position.y = RHB5.global_position.y
-											
-					newBullet = bullet.instantiate()
-					gameplay.add_child(newBullet)
-					newBullet.dirX = 1
-					newBullet.dirY = 0
-					newBullet.MaxSpeed = 400
-					newBullet.MaxDistance = 2000
-					newBullet.hasdeathAnim = false
-					newBullet.position.x = RHB6.global_position.x 
-					newBullet.position.y = RHB6.global_position.y	
-					
-					isPerformingMove = false
-					isWaitingForNextMove = true
-					
-		else:
-			await get_tree().create_timer(0.1).timeout
-			isWaitingForNextMove = false
+						newBullet = bullet.instantiate()
+						gameplay.add_child(newBullet)
+						newBullet.dirX = 1
+						newBullet.dirY = 0
+						newBullet.MaxSpeed = 800
+						newBullet.MaxDistance = 2000
+						newBullet.hasdeathAnim = false
+						newBullet.position.x = RHB5.global_position.x 
+						newBullet.position.y = RHB5.global_position.y
+												
+						newBullet = bullet.instantiate()
+						gameplay.add_child(newBullet)
+						newBullet.dirX = 1
+						newBullet.dirY = 0
+						newBullet.MaxSpeed = 400
+						newBullet.MaxDistance = 2000
+						newBullet.hasdeathAnim = false
+						newBullet.position.x = RHB6.global_position.x 
+						newBullet.position.y = RHB6.global_position.y	
+						
+						isPerformingMove = false
+						isWaitingForNextMove = true
+							
+			else:
+				await get_tree().create_timer(0.1).timeout
+				isWaitingForNextMove = false
 
 	
 func _physics_process(delta):
 	hpBar.value = hp
+	
 	if(isDashing):
 		if(moveIndex == 0):
 			if(global_position.x < rightPos.x):
@@ -358,10 +366,24 @@ func _physics_process(delta):
 		if(moveIndex == 5):
 			if(global_position.x < rightHighPos.x):
 				global_position.x += delta*dashVelocity
+
 			else:
 				isDashing = false
 				isPerformingMove = false
 				isWaitingForNextMove = true
-
+				
+	if(entry && entryTime < entryMaxTime):
+		global_position.y += delta*entrySpeed
+		entryTime+=delta
+		
+	elif(entry && entryTime >= entryMaxTime):
+			entry = false
+			leftPos = LeftHandPosition.global_position
+			rightPos = RightHandPosition.global_position
+			leftHighPos = LeftHandHighPosition.global_position
+			rightHighPos = RightHandHighPosition.global_position
+			get_tree().create_timer(3).timeout
+			_doBossLogic()
+		
 func _takeDamage(dmg):
 	hp-=dmg

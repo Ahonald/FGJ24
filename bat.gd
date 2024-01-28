@@ -89,7 +89,7 @@ func _shoot():
 	newBullet.dirY = 1
 
 func _on_hit_box_body_entered(body):
-	print(body)
+	pass
 
 #func _on_hit_box_area_entered(area):
 #	if(area.get_parent().get_name() == "PlayerBullet"):

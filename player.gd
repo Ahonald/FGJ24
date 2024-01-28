@@ -7,7 +7,7 @@ var level = 1
 var nextXP = 50
 var die = false
 
-var SPEED = 75.0
+var SPEED = 150
 const JUMP_VELOCITY = -250.0
 
 var bulletCooldown = 60
@@ -15,8 +15,8 @@ var currentBulletCooldown = 0
 var bulletCount = 1
 var bulletDamage = 5
 
-var maxJumpCount = 1
-var jumpCount = 1
+var maxJumpCount = 3
+var jumpCount = 3
 
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.

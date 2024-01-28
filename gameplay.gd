@@ -31,13 +31,13 @@ func _input(event):
 func _levelUp():
 	get_tree().paused = true
 	LevelUpPanel.visible = true
-	PowerUpIndex1 = int(rng.randf_range(0, 4))
-	PowerUpIndex2 = int(rng.randf_range(0, 4))
+	PowerUpIndex1 = int(rng.randf_range(0, 5))
+	PowerUpIndex2 = int(rng.randf_range(0, 5))
 	while PowerUpIndex1 == PowerUpIndex2:
-		PowerUpIndex2 = int(rng.randf_range(0, 4))
-	PowerUpIndex3 = int(rng.randf_range(0, 4))
+		PowerUpIndex2 = int(rng.randf_range(0, 5))
+	PowerUpIndex3 = int(rng.randf_range(0, 5))
 	while PowerUpIndex3 == PowerUpIndex2 || PowerUpIndex3 == PowerUpIndex1:
-		PowerUpIndex3 = int(rng.randf_range(0, 4))
+		PowerUpIndex3 = int(rng.randf_range(0, 5))
 	LevelUpPanel._levelUpPanelOpened(PowerUpIndex1,PowerUpIndex2,PowerUpIndex3)
 
 func _grantPowerUp(index):

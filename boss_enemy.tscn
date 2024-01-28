@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://cmq1intcs1dw3"]
+[gd_scene load_steps=12 format=3 uid="uid://cmq1intcs1dw3"]
 
 [ext_resource type="Texture2D" uid="uid://dld5q1ejj6nm6" path="res://Sprites/Character/boss.png" id="1_qurbw"]
 [ext_resource type="Script" path="res://boss_enemy.gd" id="1_wldjs"]
 [ext_resource type="Texture2D" uid="uid://bm0mhemvwcnoc" path="res://Sprites/Character/boss2.png" id="2_r5q7q"]
+[ext_resource type="Texture2D" uid="uid://3d4h6bwah5h4" path="res://Sprites/Character/Sprite-0004.png" id="4_vexg7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7dwg2"]
 atlas = ExtResource("1_qurbw")
@@ -109,14 +110,30 @@ shape = SubResource("RectangleShape2D_5ydkr")
 [node name="RightHandPosition" type="Node2D" parent="."]
 position = Vector2(300, 0)
 
+[node name="Sprite2D" type="Sprite2D" parent="RightHandPosition"]
+visible = false
+texture = ExtResource("4_vexg7")
+
 [node name="RightHandHighPosition" type="Node2D" parent="."]
-position = Vector2(300, -120)
+position = Vector2(300, -200)
+
+[node name="Sprite2D" type="Sprite2D" parent="RightHandHighPosition"]
+visible = false
+texture = ExtResource("4_vexg7")
 
 [node name="LeftHandPosition" type="Node2D" parent="."]
 position = Vector2(-300, 0)
 
+[node name="Sprite2D" type="Sprite2D" parent="LeftHandPosition"]
+visible = false
+texture = ExtResource("4_vexg7")
+
 [node name="LeftHandHighPosition" type="Node2D" parent="."]
-position = Vector2(-300, -120)
+position = Vector2(-300, -200)
+
+[node name="Sprite2D" type="Sprite2D" parent="LeftHandHighPosition"]
+visible = false
+texture = ExtResource("4_vexg7")
 
 [node name="RightHandBullets" type="Node2D" parent="."]
 position = Vector2(41, -3)
