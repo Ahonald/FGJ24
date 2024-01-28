@@ -3,15 +3,15 @@ extends Node2D
 @onready var button = $BG/Button
 
 @onready var powerUpHeader1 = $BG/PowerUpHeader1
-@onready var powerUpDescription1 = $BG/PowerUp1Container/PowerUp1Description
+@onready var powerUpDescription1 = $BG/PowerUpHeader1/PowerUp1Container/PowerUp1Description
 @onready var powerUpHeader2 = $BG/PowerUpHeader2
-@onready var powerUpDescription2 = $BG/PowerUp2Container/PowerUp2Description
+@onready var powerUpDescription2 = $BG/PowerUpHeader2/PowerUp2Container/PowerUp2Description
 @onready var powerUpHeader3 = $BG/PowerUpHeader3
-@onready var powerUpDescription3 = $BG/PowerUp3Container/PowerUp3Description
+@onready var powerUpDescription3 = $BG/PowerUpHeader3/PowerUp3Container/PowerUp3Description
 
-@onready var Button1 = $BG/Button
-@onready var Button2 = $BG/Button2
-@onready var Button3 = $BG/Button3
+@onready var Button1 = $BG/PowerUpHeader1/PowerUp1Container/Button
+@onready var Button2 = $BG/PowerUpHeader2/PowerUp2Container/Button2
+@onready var Button3 = $BG/PowerUpHeader3/PowerUp3Container/Button3
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -100,4 +100,4 @@ func _levelUpPanelOpened(powerUpIndex1, powerUpIndex2, powerUpIndex3):
 	Button2.powerUpIndex = powerUpIndex2
 	Button3.powerUpIndex = powerUpIndex3
 	
-	button.grab_focus()
+	Button1.grab_focus()

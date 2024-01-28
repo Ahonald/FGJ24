@@ -1,6 +1,6 @@
 extends Button
 
-@onready var gameplay = $"../../../.."
+@onready var gameplay = $"../../../../../.."
 @export var powerUpIndex : int = 1
 # Called when the node enters the scene tree for the first time.
 func _ready():

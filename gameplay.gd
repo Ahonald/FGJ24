@@ -74,6 +74,7 @@ func _showBossHud():
 
 func _gameOver():
 	gameOverHud.visible = true
+	playerStatsHud.visible = false
 	xptallyLabel.text = "XP acquired: " + str(player.xp)
 
 func _completeGame():

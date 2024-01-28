@@ -81,6 +81,6 @@ func _shoot():
 	newBullet.dmg = bulletDmg
 	anim.play("shoot")
 
-func _takeDamage(dmg = 5):
+func _takeDamage(dmg):
 	hurt.play()
-	health-=5
+	health-=dmg

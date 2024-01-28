@@ -87,5 +87,5 @@ func _on_detection_area_body_exited(body):
 		playerIsNear = false
 		canSeePlayer = false
 		
-func _takeDamage(dmg = 5):
-	health-=5
+func _takeDamage(dmg):
+	health-=dmg

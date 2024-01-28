@@ -872,7 +872,7 @@ centered = false
 
 [node name="Player" parent="." instance=ExtResource("1_0fxm6")]
 process_mode = 1
-position = Vector2(9314, -1760)
+position = Vector2(2291, -1455)
 
 [node name="TileMap" type="TileMap" parent="."]
 process_mode = 1
@@ -901,122 +901,118 @@ script = ExtResource("7_1b24v")
 
 [node name="BG" type="TextureRect" parent="UI/LevelUpPanel"]
 modulate = Color(1, 1, 1, 0.392157)
-offset_left = 224.0
-offset_top = 134.0
-offset_right = 940.0
-offset_bottom = 526.0
+offset_left = 141.5
+offset_top = 136.0
+offset_right = 1005.5
+offset_bottom = 528.0
 texture = ExtResource("7_5vkda")
 
-[node name="Button" type="Button" parent="UI/LevelUpPanel/BG"]
+[node name="PowerUpHeader1" type="Label" parent="UI/LevelUpPanel/BG"]
 layout_mode = 0
-offset_left = 71.0
-offset_top = 306.0
-offset_right = 125.0
-offset_bottom = 337.0
-focus_neighbor_right = NodePath("../Button2")
+offset_top = 40.0
+offset_right = 288.0
+offset_bottom = 70.0
+theme_override_fonts/font = ExtResource("3_omyyo")
+theme_override_font_sizes/font_size = 20
+text = "Header 1"
+horizontal_alignment = 1
+
+[node name="PowerUp1Container" type="CenterContainer" parent="UI/LevelUpPanel/BG/PowerUpHeader1"]
+layout_mode = 0
+offset_top = 70.0
+offset_right = 288.0
+offset_bottom = 320.0
+
+[node name="PowerUp1Description" type="Label" parent="UI/LevelUpPanel/BG/PowerUpHeader1/PowerUp1Container"]
+custom_minimum_size = Vector2(200, 250)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_omyyo")
+theme_override_font_sizes/font_size = 10
+text = ",fkdhg dsjkfgh skdljhg lkjsdfh göksdfh gkjsdhf gkjsdfh gksjdfhg klsdfhg skldfhg ksdhfgskdfh gksdh gskdhgskdjfg"
+horizontal_alignment = 1
+autowrap_mode = 2
+text_overrun_behavior = 1
+
+[node name="Button" type="Button" parent="UI/LevelUpPanel/BG/PowerUpHeader1/PowerUp1Container"]
+layout_mode = 2
+focus_neighbor_right = NodePath("../../../PowerUpHeader2/PowerUp2Container/Button2")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_omyyo")
 text = "Select"
 script = ExtResource("9_y6jaa")
 
-[node name="Button2" type="Button" parent="UI/LevelUpPanel/BG"]
+[node name="PowerUpHeader2" type="Label" parent="UI/LevelUpPanel/BG"]
 layout_mode = 0
-offset_left = 277.0
-offset_top = 306.0
-offset_right = 331.0
-offset_bottom = 337.0
-focus_neighbor_left = NodePath("../Button")
-focus_neighbor_right = NodePath("../Button3")
+offset_left = 288.0
+offset_top = 40.0
+offset_right = 576.0
+offset_bottom = 70.0
+theme_override_fonts/font = ExtResource("3_omyyo")
+theme_override_font_sizes/font_size = 20
+text = "Header 1"
+horizontal_alignment = 1
+
+[node name="PowerUp2Container" type="CenterContainer" parent="UI/LevelUpPanel/BG/PowerUpHeader2"]
+layout_mode = 0
+offset_top = 70.0
+offset_right = 288.0
+offset_bottom = 320.0
+
+[node name="PowerUp2Description" type="Label" parent="UI/LevelUpPanel/BG/PowerUpHeader2/PowerUp2Container"]
+custom_minimum_size = Vector2(200, 250)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_omyyo")
+theme_override_font_sizes/font_size = 10
+text = ",fkdhg dsjkfgh skdljhg lkjsdfh göksdfh gkjsdhf gkjsdfh gksjdfhg klsdfhg skldfhg ksdhfgskdfh gksdh gskdhgskdjfg"
+horizontal_alignment = 1
+autowrap_mode = 2
+text_overrun_behavior = 1
+
+[node name="Button2" type="Button" parent="UI/LevelUpPanel/BG/PowerUpHeader2/PowerUp2Container"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../PowerUpHeader1/PowerUp1Container/Button")
+focus_neighbor_right = NodePath("../../../PowerUpHeader3/PowerUp3Container/Button3")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_omyyo")
 text = "Select"
 script = ExtResource("9_y6jaa")
 powerUpIndex = 2
 
-[node name="Button3" type="Button" parent="UI/LevelUpPanel/BG"]
+[node name="PowerUpHeader3" type="Label" parent="UI/LevelUpPanel/BG"]
 layout_mode = 0
-offset_left = 511.0
-offset_top = 309.0
-offset_right = 565.0
-offset_bottom = 340.0
-focus_neighbor_left = NodePath("../Button2")
+offset_left = 576.0
+offset_top = 40.0
+offset_right = 864.0
+offset_bottom = 68.0
+theme_override_fonts/font = ExtResource("3_omyyo")
+theme_override_font_sizes/font_size = 20
+text = "Header 1"
+horizontal_alignment = 1
+
+[node name="PowerUp3Container" type="CenterContainer" parent="UI/LevelUpPanel/BG/PowerUpHeader3"]
+layout_mode = 0
+offset_top = 70.0
+offset_right = 288.0
+offset_bottom = 320.0
+
+[node name="PowerUp3Description" type="Label" parent="UI/LevelUpPanel/BG/PowerUpHeader3/PowerUp3Container"]
+custom_minimum_size = Vector2(200, 250)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_omyyo")
+theme_override_font_sizes/font_size = 10
+text = ",fkdhg dsjkfgh skdljhg lkjsdfh göksdfh gkjsdhf gkjsdfh gksjdfhg klsdfhg skldfhg ksdhfgskdfh gksdh gskdhgskdjfg"
+horizontal_alignment = 1
+autowrap_mode = 2
+text_overrun_behavior = 1
+
+[node name="Button3" type="Button" parent="UI/LevelUpPanel/BG/PowerUpHeader3/PowerUp3Container"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../PowerUpHeader2/PowerUp2Container/Button2")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_omyyo")
 text = "Select"
 script = ExtResource("9_y6jaa")
 powerUpIndex = 3
-
-[node name="PowerUpHeader1" type="Label" parent="UI/LevelUpPanel/BG"]
-layout_mode = 0
-offset_left = 51.0
-offset_top = 40.0
-offset_right = 121.0
-offset_bottom = 63.0
-theme_override_font_sizes/font_size = 20
-text = "Header 1"
-
-[node name="PowerUpHeader2" type="Label" parent="UI/LevelUpPanel/BG"]
-layout_mode = 0
-offset_left = 268.0
-offset_top = 39.0
-offset_right = 338.0
-offset_bottom = 62.0
-theme_override_font_sizes/font_size = 20
-text = "Header 1"
-
-[node name="PowerUpHeader3" type="Label" parent="UI/LevelUpPanel/BG"]
-layout_mode = 0
-offset_left = 516.0
-offset_top = 36.0
-offset_right = 586.0
-offset_bottom = 59.0
-theme_override_font_sizes/font_size = 20
-text = "Header 1"
-
-[node name="PowerUp1Container" type="CenterContainer" parent="UI/LevelUpPanel/BG"]
-layout_mode = 0
-offset_left = 12.0
-offset_top = 112.0
-offset_right = 212.0
-offset_bottom = 362.0
-
-[node name="PowerUp1Description" type="Label" parent="UI/LevelUpPanel/BG/PowerUp1Container"]
-custom_minimum_size = Vector2(200, 250)
-layout_mode = 2
-theme_override_font_sizes/font_size = 10
-text = ",fkdhg dsjkfgh skdljhg lkjsdfh göksdfh gkjsdhf gkjsdfh gksjdfhg klsdfhg skldfhg ksdhfgskdfh gksdh gskdhgskdjfg"
-autowrap_mode = 2
-text_overrun_behavior = 1
-
-[node name="PowerUp2Container" type="CenterContainer" parent="UI/LevelUpPanel/BG"]
-layout_mode = 0
-offset_left = 229.0
-offset_top = 111.0
-offset_right = 429.0
-offset_bottom = 361.0
-
-[node name="PowerUp2Description" type="Label" parent="UI/LevelUpPanel/BG/PowerUp2Container"]
-custom_minimum_size = Vector2(200, 250)
-layout_mode = 2
-theme_override_font_sizes/font_size = 10
-text = ",fkdhg dsjkfgh skdljhg lkjsdfh göksdfh gkjsdhf gkjsdfh gksjdfhg klsdfhg skldfhg ksdhfgskdfh gksdh gskdhgskdjfg"
-autowrap_mode = 2
-text_overrun_behavior = 1
-
-[node name="PowerUp3Container" type="CenterContainer" parent="UI/LevelUpPanel/BG"]
-layout_mode = 0
-offset_left = 472.0
-offset_top = 108.0
-offset_right = 672.0
-offset_bottom = 358.0
-
-[node name="PowerUp3Description" type="Label" parent="UI/LevelUpPanel/BG/PowerUp3Container"]
-custom_minimum_size = Vector2(200, 250)
-layout_mode = 2
-theme_override_font_sizes/font_size = 10
-text = ",fkdhg dsjkfgh skdljhg lkjsdfh göksdfh gkjsdhf gkjsdfh gksjdfhg klsdfhg skldfhg ksdhfgskdfh gksdh gskdhgskdjfg"
-autowrap_mode = 2
-text_overrun_behavior = 1
 
 [node name="BossHP" type="Node2D" parent="UI"]
 visible = false
@@ -1218,6 +1214,7 @@ position = Vector2(2028, -1147)
 
 [node name="RobotEnemy2" parent="." instance=ExtResource("17_wwgof")]
 position = Vector2(2537, -1144)
+xpValue = 55
 
 [node name="SlimeEnemy5" parent="." instance=ExtResource("12_abg1h")]
 position = Vector2(3219, -1411)
@@ -1610,8 +1607,8 @@ position = Vector2(9486, -1465)
 [node name="BossTrigger" parent="." instance=ExtResource("24_da2o5")]
 position = Vector2(9678, -1458)
 
-[connection signal="pressed" from="UI/LevelUpPanel/BG/Button" to="UI/LevelUpPanel/BG/Button" method="_on_pressed"]
-[connection signal="pressed" from="UI/LevelUpPanel/BG/Button2" to="UI/LevelUpPanel/BG/Button2" method="_on_pressed"]
-[connection signal="pressed" from="UI/LevelUpPanel/BG/Button3" to="UI/LevelUpPanel/BG/Button3" method="_on_pressed"]
+[connection signal="pressed" from="UI/LevelUpPanel/BG/PowerUpHeader1/PowerUp1Container/Button" to="UI/LevelUpPanel/BG/PowerUpHeader1/PowerUp1Container/Button" method="_on_pressed"]
+[connection signal="pressed" from="UI/LevelUpPanel/BG/PowerUpHeader2/PowerUp2Container/Button2" to="UI/LevelUpPanel/BG/PowerUpHeader2/PowerUp2Container/Button2" method="_on_pressed"]
+[connection signal="pressed" from="UI/LevelUpPanel/BG/PowerUpHeader3/PowerUp3Container/Button3" to="UI/LevelUpPanel/BG/PowerUpHeader3/PowerUp3Container/Button3" method="_on_pressed"]
 [connection signal="pressed" from="UI/GameOverHud/Button" to="UI/GameOverHud" method="_on_button_pressed"]
 [connection signal="pressed" from="UI/GameCompleteHud/TextureRect/MenuButton" to="." method="_on_menu_button_pressed"]
