@@ -15,8 +15,8 @@ var currentBulletCooldown = 0
 var bulletCount = 1
 var bulletDamage = 5
 
-var maxJumpCount = 3
-var jumpCount = 3
+var maxJumpCount = 1
+var jumpCount = 1
 
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.

@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 var hp = 2000
+var maxHp = 2000
 var dmg = 10
 @onready var hpBar = $"../UI/BossHP/BossHPBar"
 
@@ -9,6 +10,7 @@ const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 var isPerformingMove = false
 var isWaitingForNextMove = true
+var waitTime = 1.5
 var moveIndex = 0
 var rng = RandomNumberGenerator.new()
 var posDist
@@ -336,7 +338,8 @@ func _doBossLogic():
 						isWaitingForNextMove = true
 							
 			else:
-				await get_tree().create_timer(0.1).timeout
+				var timeOut = waitTime * (hp/maxHp)
+				await get_tree().create_timer(timeOut).timeout
 				isWaitingForNextMove = false
 
 	

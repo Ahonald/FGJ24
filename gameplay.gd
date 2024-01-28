@@ -40,13 +40,17 @@ func _input(event):
 func _levelUp():
 	get_tree().paused = true
 	LevelUpPanel.visible = true
-	PowerUpIndex1 = int(rng.randf_range(0, 5))
-	PowerUpIndex2 = int(rng.randf_range(0, 5))
+	var min = 0
+	var max = 5
+	if(player.bulletCount >=8):
+		max = 4
+	PowerUpIndex1 = int(rng.randf_range(min, max))
+	PowerUpIndex2 = int(rng.randf_range(min, max))
 	while PowerUpIndex1 == PowerUpIndex2:
-		PowerUpIndex2 = int(rng.randf_range(0, 5))
-	PowerUpIndex3 = int(rng.randf_range(0, 5))
+		PowerUpIndex2 = int(rng.randf_range(min, max))
+	PowerUpIndex3 = int(rng.randf_range(min, max))
 	while PowerUpIndex3 == PowerUpIndex2 || PowerUpIndex3 == PowerUpIndex1:
-		PowerUpIndex3 = int(rng.randf_range(0, 5))
+		PowerUpIndex3 = int(rng.randf_range(min, max))
 	LevelUpPanel._levelUpPanelOpened(PowerUpIndex1,PowerUpIndex2,PowerUpIndex3)
 
 func _grantPowerUp(index):
@@ -60,10 +64,10 @@ func _grantPowerUp(index):
 		3:
 			player.maxHealth+=20
 			player.health = player.maxHealth
-		4:
-			player.bulletCount+=1
 		5:
-			player.bulletDamge+=2
+			player.bulletCount+=1
+		4:
+			player.bulletDamage+=2
 			
 	player.nextXP = int(player.nextXP*2)
 	player.level+=1

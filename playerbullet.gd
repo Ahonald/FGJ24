@@ -1,6 +1,6 @@
 extends Node2D
 
-var speed = 500
+var speed = 1000
 const MaxDistance = 500
 var travelledDistance = 0
 var isMovingRight = true
@@ -11,8 +11,10 @@ func _ready():
 	var player =  $"../Player"# Replace with function body.
 	if(player.isPointingRight):
 		isMovingRight = true
+		get_node("Sprite2D").flip_h = false
 	else:
 		isMovingRight = false
+		get_node("Sprite2D").flip_h = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
