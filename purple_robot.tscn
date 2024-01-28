@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dmfcapjmf61se"]
+[gd_scene load_steps=19 format=3 uid="uid://bqdfi0uceuttp"]
 
 [ext_resource type="Script" path="res://robot.gd" id="1_4huul"]
 [ext_resource type="Texture2D" uid="uid://c411wji2n6f6x" path="res://Sprites/Character/explosion.png" id="2_fgnpc"]
@@ -217,12 +217,10 @@ shape = SubResource("RectangleShape2D_ft5mh")
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_uew65")
 volume_db = -5.557
-bus = &"SFX"
 
 [node name="RoboHurt" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_sn1e8")
 pitch_scale = 0.65
-bus = &"SFX"
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

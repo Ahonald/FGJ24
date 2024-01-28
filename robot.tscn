@@ -187,11 +187,9 @@ script = ExtResource("1_7ggk5")
 
 [node name="RoboHurt" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_0bu2d")
-bus = &"SFX"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_gqvd8")
-bus = &"SFX"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_f0fdg")
