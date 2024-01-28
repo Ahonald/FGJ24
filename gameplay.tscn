@@ -873,7 +873,7 @@ centered = false
 
 [node name="Player" parent="." instance=ExtResource("1_0fxm6")]
 process_mode = 1
-position = Vector2(9290, -1840)
+position = Vector2(9283, -1471)
 
 [node name="TileMap" type="TileMap" parent="."]
 process_mode = 1
@@ -1035,7 +1035,7 @@ offset_right = 813.0
 offset_bottom = 626.0
 theme_override_styles/background = SubResource("StyleBoxFlat_8hnhd")
 theme_override_styles/fill = SubResource("StyleBoxFlat_1tflh")
-max_value = 2000.0
+max_value = 1000.0
 step = 1.0
 show_percentage = false
 

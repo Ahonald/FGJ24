@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-var hp = 2000
-var maxHp = 2000
+var hp = 1000
+var maxHp = 1000
 var dmg = 10
 @onready var hpBar = $"../UI/BossHP/BossHPBar"
 
