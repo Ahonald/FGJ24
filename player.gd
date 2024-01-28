@@ -7,7 +7,7 @@ var level = 1
 var nextXP = 50
 var die = false
 
-var SPEED = 125.0
+var SPEED = 75.0
 const JUMP_VELOCITY = -250.0
 
 var bulletCooldown = 60
@@ -15,8 +15,8 @@ var currentBulletCooldown = 0
 var bulletCount = 1
 var bulletDamage = 5
 
-var maxJumpCount = 2
-var jumpCount = 2
+var maxJumpCount = 1
+var jumpCount = 1
 
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -58,7 +58,7 @@ func _ready():
 
 func _physics_process(delta):
 	hpBar.value = health
-	hpLabel.text = str(health) + "/" + str(maxHealth)
+	hpLabel.text = str(clamp(health, 0, maxHealth)) + "/" + str(maxHealth)
 	xpBar.value = xp
 	xpLabel.text = "to next: " + str(nextXP-xp)
 	lvlLabel.text = "LVL " + str(level)

@@ -188,7 +188,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2sxy0"]
-size = Vector2(205, 20)
+size = Vector2(346, 106)
 
 [node name="SlimeEnemy" type="CharacterBody2D"]
 script = ExtResource("1_gbatk")
@@ -219,7 +219,7 @@ frame = 3
 [node name="DetectionArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
-position = Vector2(0.5, 0)
+position = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_2sxy0")
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]

@@ -7,6 +7,7 @@ var shootCoolDown = 0
 
 var xDelta = 0
 var yDelta = 0
+var dmg = 5
 
 var xpValue = 15
 
@@ -67,6 +68,7 @@ func _shoot():
 	gameplay.add_child(newBullet)
 	newBullet.position.x = bulletPoint.global_position.x
 	newBullet.position.y = bulletPoint.global_position.y
+	newBullet.MaxSpeed = 200
 	newBullet.dirX = 0
 	newBullet.dirY = 1
 	
@@ -74,6 +76,7 @@ func _shoot():
 	gameplay.add_child(newBullet)
 	newBullet.position.x = bulletPoint2.global_position.x
 	newBullet.position.y = bulletPoint2.global_position.y
+	newBullet.MaxSpeed = 200
 	newBullet.dirX = 0.5
 	newBullet.dirY = 1
 
@@ -81,6 +84,7 @@ func _shoot():
 	gameplay.add_child(newBullet)
 	newBullet.position.x = bulletPoint3.global_position.x
 	newBullet.position.y = bulletPoint3.global_position.y
+	newBullet.MaxSpeed = 200
 	newBullet.dirX = -0.5
 	newBullet.dirY = 1
 

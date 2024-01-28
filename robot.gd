@@ -70,7 +70,7 @@ func _shoot():
 	gameplay.add_child(newBullet)
 	newBullet.dirX = bulletDir
 	newBullet.dirY = 0
-	newBullet.MaxSpeed = 200
+	newBullet.MaxSpeed = 500
 	newBullet.MaxDistance = 2000
 	newBullet.hasdeathAnim = false
 	newBullet.position.x = bulletPoint.global_position.x if bulletDir == 1 else bulletPoint2.global_position.x

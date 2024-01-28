@@ -188,7 +188,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2sxy0"]
-size = Vector2(205, 20)
+size = Vector2(285, 118)
 
 [node name="SlimeEnemy" type="CharacterBody2D"]
 script = ExtResource("1_2nsxd")
