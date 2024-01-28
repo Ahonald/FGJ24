@@ -1,14 +1,14 @@
-[gd_scene load_steps=35 format=3 uid="uid://c202yvemg0spw"]
+[gd_scene load_steps=36 format=3 uid="uid://c202yvemg0spw"]
 
 [ext_resource type="PackedScene" uid="uid://c0xbihl6kfm8l" path="res://player.tscn" id="1_0fxm6"]
 [ext_resource type="Script" path="res://gameplay.gd" id="1_m4jxv"]
 [ext_resource type="Texture2D" uid="uid://dlegl8a6otekn" path="res://Sprites/Ground and Terrain/Lvl1Ground.png" id="1_uniq1"]
 [ext_resource type="Texture2D" uid="uid://csv572lo4314x" path="res://Sprites/Background/NightSkyBLACKBG.png" id="2_ltun7"]
-[ext_resource type="Texture2D" uid="uid://cy1jupbw7upg1" path="res://Sprites/Ground and Terrain/GroundSheetPurple32x32.png" id="3_hv7vg"]
+[ext_resource type="Texture2D" uid="uid://b5kbd4oylg6v" path="res://Sprites/Ground and Terrain/GroundSheetPurple32x32.png" id="3_hv7vg"]
 [ext_resource type="Texture2D" uid="uid://d31brtmjydlu8" path="res://Sprites/Background/NightSky.png" id="3_oh3cd"]
 [ext_resource type="FontFile" uid="uid://dkusyemblufbm" path="res://Fonts/Sabo-Filled.otf" id="3_omyyo"]
 [ext_resource type="PackedScene" uid="uid://cv5ljghmg7wxw" path="res://slime.tscn" id="4_6itfw"]
-[ext_resource type="Texture2D" uid="uid://26jmcdr0aqe5" path="res://Sprites/Enviromental/Misc.png" id="4_y0pm4"]
+[ext_resource type="Texture2D" uid="uid://c6l0d473r75i" path="res://Sprites/Enviromental/Misc.png" id="4_y0pm4"]
 [ext_resource type="Script" path="res://LevelUpPanel.gd" id="7_1b24v"]
 [ext_resource type="Texture2D" uid="uid://d1sqkef75r3m2" path="res://Sprites/black.png" id="7_5vkda"]
 [ext_resource type="PackedScene" uid="uid://dtd25jm2xcf4k" path="res://moving_platform.tscn" id="9_qdffp"]
@@ -22,8 +22,9 @@
 [ext_resource type="PackedScene" uid="uid://76p3om2v567b" path="res://bat.tscn" id="19_jjhhq"]
 [ext_resource type="PackedScene" uid="uid://b27md0v3h5q5c" path="res://death_zone.tscn" id="20_8juij"]
 [ext_resource type="PackedScene" uid="uid://cmq1intcs1dw3" path="res://boss_enemy.tscn" id="22_7gldg"]
-[ext_resource type="AudioStream" uid="uid://clj1bxlxpsvc8" path="res://Audio/Music/GobboLevel.wav" id="22_48ncx"]
+[ext_resource type="AudioStream" uid="uid://ckj8r0tb3mado" path="res://Audio/Music/GobboLevel.wav" id="22_48ncx"]
 [ext_resource type="PackedScene" uid="uid://cn6k13e40vhrt" path="res://boss_door.tscn" id="23_65abd"]
+[ext_resource type="AudioStream" uid="uid://bo68xakdqekcq" path="res://Audio/Music/VSGamedevGuyWithINTRO.ogg" id="23_qb1af"]
 [ext_resource type="PackedScene" uid="uid://db7bj8iwyt863" path="res://boss_trigger.tscn" id="24_da2o5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q0irt"]
@@ -1019,19 +1020,19 @@ visible = false
 
 [node name="BossName" type="Label" parent="UI/BossHP"]
 z_index = 2
-offset_left = 386.0
 offset_top = 576.0
-offset_right = 665.0
+offset_right = 1152.0
 offset_bottom = 599.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3_omyyo")
 text = "Developer of shitty jokes"
+horizontal_alignment = 1
 
 [node name="BossHPBar" type="ProgressBar" parent="UI/BossHP"]
-offset_left = 311.0
-offset_top = 602.0
-offset_right = 761.0
-offset_bottom = 629.0
+offset_left = 363.0
+offset_top = 599.0
+offset_right = 813.0
+offset_bottom = 626.0
 theme_override_styles/background = SubResource("StyleBoxFlat_8hnhd")
 theme_override_styles/fill = SubResource("StyleBoxFlat_1tflh")
 max_value = 2000.0
@@ -1140,7 +1141,7 @@ offset_left = 18.0
 offset_top = 40.0
 offset_right = 68.0
 offset_bottom = 63.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3_omyyo")
 text = "LVL 1"
 
@@ -1173,10 +1174,10 @@ position = Vector2(9, 53)
 
 [node name="HPLabel" type="Label" parent="UI/PlayerStats/HP"]
 z_index = 1
-offset_left = 13.0
-offset_top = 18.0
-offset_right = 53.0
-offset_bottom = 41.0
+offset_left = 12.0
+offset_top = 17.0
+offset_right = 52.0
+offset_bottom = 40.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_omyyo")
 text = "HP"
@@ -1592,13 +1593,18 @@ position = Vector2(8537, -1602)
 [node name="RobotEnemy24" parent="." instance=ExtResource("17_wwgof")]
 position = Vector2(3026, -1225)
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("22_48ncx")
-autoplay = true
-
 [node name="BossEnemy" parent="." instance=ExtResource("22_7gldg")]
 process_mode = 4
 position = Vector2(9896, -1702)
+
+[node name="AreaMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("22_48ncx")
+autoplay = true
+bus = &"Music"
+
+[node name="BossMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("23_qb1af")
+bus = &"Music"
 
 [node name="BossDoor" parent="." instance=ExtResource("23_65abd")]
 process_mode = 4
@@ -1612,3 +1618,6 @@ position = Vector2(9678, -1458)
 [connection signal="pressed" from="UI/LevelUpPanel/BG/PowerUpHeader3/PowerUp3Container/Button3" to="UI/LevelUpPanel/BG/PowerUpHeader3/PowerUp3Container/Button3" method="_on_pressed"]
 [connection signal="pressed" from="UI/GameOverHud/Button" to="UI/GameOverHud" method="_on_button_pressed"]
 [connection signal="pressed" from="UI/GameCompleteHud/TextureRect/MenuButton" to="." method="_on_menu_button_pressed"]
+[connection signal="visibility_changed" from="BossEnemy" to="." method="_on_boss_enemy_visibility_changed"]
+[connection signal="ready" from="BossTrigger" to="." method="_on_boss_trigger_ready"]
+[connection signal="visibility_changed" from="BossTrigger" to="." method="_on_boss_trigger_visibility_changed"]

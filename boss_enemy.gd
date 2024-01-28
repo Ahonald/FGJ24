@@ -15,6 +15,7 @@ var posDist
 
 var dashVelocity = 500
 
+
 @onready var LeftHandPosition = $LeftHandPosition
 @onready var RightHandPosition = $RightHandPosition
 
@@ -58,6 +59,7 @@ func _ready():
 	#rightHighPos = RightHandHighPosition.global_position
 	#_doBossLogic()
 	
+
 func _doBossLogic():
 		while true:
 			if(!isWaitingForNextMove && !isDashing && !die):
