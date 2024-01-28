@@ -1,9 +1,22 @@
-[gd_scene load_steps=12 format=3 uid="uid://cmq1intcs1dw3"]
+[gd_scene load_steps=17 format=3 uid="uid://cmq1intcs1dw3"]
 
 [ext_resource type="Texture2D" uid="uid://dld5q1ejj6nm6" path="res://Sprites/Character/boss.png" id="1_qurbw"]
 [ext_resource type="Script" path="res://boss_enemy.gd" id="1_wldjs"]
+[ext_resource type="Texture2D" uid="uid://c6mfm55gcyitd" path="res://Sprites/Character/bigexplosion.png" id="2_lgcvg"]
 [ext_resource type="Texture2D" uid="uid://bm0mhemvwcnoc" path="res://Sprites/Character/boss2.png" id="2_r5q7q"]
 [ext_resource type="Texture2D" uid="uid://3d4h6bwah5h4" path="res://Sprites/Character/Sprite-0004.png" id="4_vexg7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xoxkw"]
+atlas = ExtResource("2_lgcvg")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uv80o"]
+atlas = ExtResource("2_lgcvg")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_chgq0"]
+atlas = ExtResource("2_lgcvg")
+region = Rect2(0, 64, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7dwg2"]
 atlas = ExtResource("1_qurbw")
@@ -15,6 +28,20 @@ region = Rect2(0, 0, 128, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rljat"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xoxkw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uv80o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_chgq0")
+}],
+"loop": true,
+"name": &"Explode",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_7dwg2")
@@ -81,8 +108,38 @@ tracks/1/keys = {
 "values": [1, 0]
 }
 
+[sub_resource type="Animation" id="Animation_ikrnl"]
+resource_name = "Explode"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Explode"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_di42g"]
 _data = {
+"Explode": SubResource("Animation_ikrnl"),
 "RESET": SubResource("Animation_cpemo"),
 "Talk": SubResource("Animation_3ycg4")
 }

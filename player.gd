@@ -13,7 +13,7 @@ const JUMP_VELOCITY = -250.0
 var bulletCooldown = 60
 var currentBulletCooldown = 0
 var bulletCount = 1
-var bulletDamage = 5
+var bulletDamage = 1900
 
 var maxJumpCount = 3
 var jumpCount = 3
@@ -39,12 +39,12 @@ var isPointingRight
 @onready var anim = get_node("AnimationPlayer") 
 @onready var bullet = preload("res://playerBullet.tscn")
 @onready var rb = $RigidBody2D
-@onready var hpLabel = $"../UI/HP/HPLabel"
-@onready var hpBar = $"../UI/HP/HealthBar"
-@onready var xpLabel = $"../UI/XP/XPLabel"
-@onready var xpBar = $"../UI/XP/XPBar"
+@onready var hpLabel = $"../UI/PlayerStats/HP/HPLabel"
+@onready var hpBar = $"../UI/PlayerStats/HP/HealthBar"
+@onready var xpLabel = $"../UI/PlayerStats/XP/XPLabel"
+@onready var xpBar = $"../UI/PlayerStats/XP/XPBar"
 @onready var dmgText = $Label
-@onready var lvlLabel = $"../UI/LevelLabel"
+@onready var lvlLabel = $"../UI/PlayerStats/LevelLabel"
 @onready var gameplay = $".."
 @onready var sprite = $AnimatedSprite2D
 @onready var PlayerHurt = get_node("PlayerHurt")

@@ -20,6 +20,7 @@ var dashVelocity = 500
 
 @onready var LeftHandHighPosition = $LeftHandHighPosition
 @onready var RightHandHighPosition = $RightHandHighPosition
+@onready var anim = $AnimatedSprite2D/AnimationPlayer
 
 var rightPos
 var leftPos
@@ -30,6 +31,8 @@ var entry = true
 var entryTime = 0
 var entryMaxTime = 8
 var entrySpeed = 25
+
+var die = false
 
 @onready var bullet = preload("res://enemy_bullet_redbullet.tscn")
 @onready var RHB1 = $RightHandBullets/RHB
@@ -57,7 +60,7 @@ func _ready():
 	
 func _doBossLogic():
 		while true:
-			if(!isWaitingForNextMove && !isDashing):
+			if(!isWaitingForNextMove && !isDashing && !die):
 				moveIndex = int(rng.randf_range(0, 8))
 				isPerformingMove = true
 				match moveIndex:
@@ -70,7 +73,7 @@ func _doBossLogic():
 						gameplay.add_child(newBullet)
 						newBullet.dirX = 1
 						newBullet.dirY = 0
-						newBullet.MaxSpeed = 400
+						newBullet.MaxSpeed = rng.randf_range(600, 1200)
 						newBullet.MaxDistance = 2000
 						newBullet.hasdeathAnim = false
 						newBullet.position.x = RHB1.global_position.x 
@@ -90,7 +93,7 @@ func _doBossLogic():
 						gameplay.add_child(newBullet)
 						newBullet.dirX = 1
 						newBullet.dirY = 0
-						newBullet.MaxSpeed = 400
+						newBullet.MaxSpeed = rng.randf_range(600, 1200)
 						newBullet.MaxDistance = 2000
 						newBullet.hasdeathAnim = false
 						newBullet.position.x = RHB3.global_position.x 
@@ -110,7 +113,7 @@ func _doBossLogic():
 						gameplay.add_child(newBullet)
 						newBullet.dirX = 1
 						newBullet.dirY = 0
-						newBullet.MaxSpeed = 400
+						newBullet.MaxSpeed = rng.randf_range(600, 1200)
 						newBullet.MaxDistance = 2000
 						newBullet.hasdeathAnim = false
 						newBullet.position.x = RHB5.global_position.x 
@@ -134,7 +137,7 @@ func _doBossLogic():
 						gameplay.add_child(newBullet)
 						newBullet.dirX = -1
 						newBullet.dirY = 0
-						newBullet.MaxSpeed = 400
+						newBullet.MaxSpeed = rng.randf_range(600, 1200)
 						newBullet.MaxDistance = 2000
 						newBullet.hasdeathAnim = false
 						newBullet.position.x = LHB1.global_position.x 
@@ -154,7 +157,7 @@ func _doBossLogic():
 						gameplay.add_child(newBullet)
 						newBullet.dirX = -1
 						newBullet.dirY = 0
-						newBullet.MaxSpeed = 400
+						newBullet.MaxSpeed = rng.randf_range(600, 1200)
 						newBullet.MaxDistance = 2000
 						newBullet.hasdeathAnim = false
 						newBullet.position.x = LHB3.global_position.x 
@@ -174,7 +177,7 @@ func _doBossLogic():
 						gameplay.add_child(newBullet)
 						newBullet.dirX = -1
 						newBullet.dirY = 0
-						newBullet.MaxSpeed = 400
+						newBullet.MaxSpeed = rng.randf_range(600, 1200)
 						newBullet.MaxDistance = 2000
 						newBullet.hasdeathAnim = false
 						newBullet.position.x = LHB5.global_position.x 
@@ -217,7 +220,7 @@ func _doBossLogic():
 						gameplay.add_child(newBullet)
 						newBullet.dirX = -1
 						newBullet.dirY = 0
-						newBullet.MaxSpeed = 400
+						newBullet.MaxSpeed = rng.randf_range(600, 1200)
 						newBullet.MaxDistance = 2000
 						newBullet.hasdeathAnim = false
 						newBullet.position.x = LHB2.global_position.x 
@@ -237,7 +240,7 @@ func _doBossLogic():
 						gameplay.add_child(newBullet)
 						newBullet.dirX = -1
 						newBullet.dirY = 0
-						newBullet.MaxSpeed = 400
+						newBullet.MaxSpeed = rng.randf_range(600, 1200)
 						newBullet.MaxDistance = 2000
 						newBullet.hasdeathAnim = false
 						newBullet.position.x = LHB4.global_position.x 
@@ -257,7 +260,7 @@ func _doBossLogic():
 						gameplay.add_child(newBullet)
 						newBullet.dirX = -1
 						newBullet.dirY = 0
-						newBullet.MaxSpeed = 400
+						newBullet.MaxSpeed = rng.randf_range(600, 1200)
 						newBullet.MaxDistance = 2000
 						newBullet.hasdeathAnim = false
 						newBullet.position.x = LHB6.global_position.x 
@@ -281,7 +284,7 @@ func _doBossLogic():
 						gameplay.add_child(newBullet)
 						newBullet.dirX = 1
 						newBullet.dirY = 0
-						newBullet.MaxSpeed = 400
+						newBullet.MaxSpeed = rng.randf_range(600, 1200)
 						newBullet.MaxDistance = 2000
 						newBullet.hasdeathAnim = false
 						newBullet.position.x = RHB2.global_position.x 
@@ -301,7 +304,7 @@ func _doBossLogic():
 						gameplay.add_child(newBullet)
 						newBullet.dirX = 1
 						newBullet.dirY = 0
-						newBullet.MaxSpeed = 400
+						newBullet.MaxSpeed = rng.randf_range(600, 1200)
 						newBullet.MaxDistance = 2000
 						newBullet.hasdeathAnim = false
 						newBullet.position.x = RHB4.global_position.x 
@@ -321,7 +324,7 @@ func _doBossLogic():
 						gameplay.add_child(newBullet)
 						newBullet.dirX = 1
 						newBullet.dirY = 0
-						newBullet.MaxSpeed = 400
+						newBullet.MaxSpeed = rng.randf_range(600, 1200)
 						newBullet.MaxDistance = 2000
 						newBullet.hasdeathAnim = false
 						newBullet.position.x = RHB6.global_position.x 
@@ -338,7 +341,7 @@ func _doBossLogic():
 func _physics_process(delta):
 	hpBar.value = hp
 	
-	if(isDashing):
+	if(isDashing && !die):
 		if(moveIndex == 0):
 			if(global_position.x < rightPos.x):
 				global_position.x += delta*dashVelocity
@@ -384,6 +387,15 @@ func _physics_process(delta):
 			rightHighPos = RightHandHighPosition.global_position
 			get_tree().create_timer(3).timeout
 			_doBossLogic()
-		
+			
 func _takeDamage(dmg):
 	hp-=dmg
+	if(hp<= 0):
+		die = true
+		_death()
+		
+func _death():
+	gameplay._completeGame()
+	anim.play("Explode")
+	await get_tree().create_timer(3).timeout
+	queue_free()

@@ -3,7 +3,7 @@ extends Node2D
 @onready var bossDoor = $"../BossDoor"
 @onready var gameplay = $".."
 @onready var player = $"../Player"
-# Called when the node enters the scene tree for the first time.
+@onready var boss = $"../BossEnemy"
 func _ready():
 	bossDoor.visible = false
 	bossDoor.process_mode = Node.PROCESS_MODE_DISABLED  # Replace with function body.
@@ -16,6 +16,7 @@ func _process(delta):
 
 func _on_area_2d_body_entered(body):
 	if(body.name == "Player"):
+		boss.process_mode = Node.PROCESS_MODE_INHERIT
 		bossDoor.visible = true
 		bossDoor.process_mode = Node.PROCESS_MODE_INHERIT
 		player.set_physics_process(false)

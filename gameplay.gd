@@ -7,11 +7,19 @@ var paused = false
 @onready var gameOverHud = $UI/GameOverHud
 @onready var xptallyLabel = $UI/GameOverHud/XPTally
 
+@onready var gameCompleteHud = $UI/GameCompleteHud
+@onready var playerStatsHud = $UI/PlayerStats
+@onready var completeLVLTally =$UI/GameCompleteHud/TextureRect/LVLTally
+@onready var completeXPTally =$UI/GameCompleteHud/TextureRect/XPTally
+@onready var toMainMenuButton = $UI/GameCompleteHud/TextureRect/MenuButton
+
 var PowerUpIndex1 = 1
 var PowerUpIndex2 = 2
 var PowerUpIndex3 = 3
 
 var rng = RandomNumberGenerator.new()
+
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -67,3 +75,15 @@ func _showBossHud():
 func _gameOver():
 	gameOverHud.visible = true
 	xptallyLabel.text = "XP acquired: " + str(player.xp)
+
+func _completeGame():
+	player.set_physics_process(false)
+	playerStatsHud.visible = false
+	gameCompleteHud.visible = true
+	toMainMenuButton.grab_focus()
+	completeLVLTally.text = "Levels acquired: " + str(player.level)
+	completeXPTally.text = "XP accrued: " + str(player.xp)
+
+
+func _on_menu_button_pressed():
+	get_tree().change_scene_to_file("res://main_menu.tscn")
