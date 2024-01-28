@@ -1,19 +1,23 @@
-[gd_scene load_steps=4 format=3 uid="uid://dxkcmlyswn4ji"]
+[gd_scene load_steps=7 format=3 uid="uid://dxkcmlyswn4ji"]
 
 [ext_resource type="Script" path="res://MainMenuButton.gd" id="1_cwlci"]
 [ext_resource type="AudioStream" uid="uid://7hkyig77pghq" path="res://Audio/SFX/UI etc/UIConfirmSelect.wav" id="2_uylwo"]
 [ext_resource type="AudioStream" uid="uid://cw6jubr5a75r" path="res://Audio/Music/MainMenuTest.wav" id="3_20yth"]
+[ext_resource type="FontFile" uid="uid://dkusyemblufbm" path="res://Fonts/Sabo-Filled.otf" id="3_e0imi"]
+[ext_resource type="Texture2D" uid="uid://csv572lo4314x" path="res://Sprites/Background/NightSkyBLACKBG.png" id="4_t3r67"]
+[ext_resource type="Texture2D" uid="uid://d31brtmjydlu8" path="res://Sprites/Background/NightSky.png" id="5_rkb54"]
 
 [node name="MainMenu" type="Node2D"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Play" type="Button" parent="CanvasLayer"]
-offset_left = 535.0
-offset_top = 189.0
-offset_right = 577.0
-offset_bottom = 220.0
+offset_left = 434.5
+offset_top = 200.0
+offset_right = 722.5
+offset_bottom = 262.0
 focus_neighbor_bottom = NodePath("../QuitButton")
+theme_override_fonts/font = ExtResource("3_e0imi")
 text = "Play"
 script = ExtResource("1_cwlci")
 
@@ -21,12 +25,41 @@ script = ExtResource("1_cwlci")
 stream = ExtResource("2_uylwo")
 
 [node name="QuitButton" type="Button" parent="CanvasLayer"]
-offset_left = 537.0
-offset_top = 404.0
-offset_right = 579.0
-offset_bottom = 435.0
+offset_left = 434.5
+offset_top = 400.0
+offset_right = 722.5
+offset_bottom = 462.0
 focus_neighbor_top = NodePath("../Play")
+theme_override_fonts/font = ExtResource("3_e0imi")
 text = "Quit"
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = -10.0
+offset_top = 106.0
+offset_right = 1142.0
+offset_bottom = 221.0
+rotation = -0.105941
+theme_override_fonts/font = ExtResource("3_e0imi")
+theme_override_font_sizes/font_size = 60
+text = "Not funny."
+horizontal_alignment = 1
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="CanvasLayer"]
+
+[node name="SpaceDark" type="ParallaxLayer" parent="CanvasLayer/ParallaxBackground"]
+motion_scale = Vector2(0, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/SpaceDark"]
+texture = ExtResource("4_t3r67")
+centered = false
+
+[node name="SpaceSky" type="ParallaxLayer" parent="CanvasLayer/ParallaxBackground"]
+motion_mirroring = Vector2(1152, 648)
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/SpaceSky"]
+texture_filter = 1
+texture = ExtResource("5_rkb54")
+centered = false
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_20yth")
