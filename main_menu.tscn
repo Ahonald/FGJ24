@@ -2,14 +2,10 @@
 
 [ext_resource type="Script" path="res://MainMenuButton.gd" id="1_cwlci"]
 [ext_resource type="AudioStream" uid="uid://7hkyig77pghq" path="res://Audio/SFX/UI etc/UIConfirmSelect.wav" id="2_uylwo"]
-<<<<<<< HEAD
 [ext_resource type="AudioStream" uid="uid://cw6jubr5a75r" path="res://Audio/Music/MainMenuTest.wav" id="3_20yth"]
 [ext_resource type="FontFile" uid="uid://dkusyemblufbm" path="res://Fonts/Sabo-Filled.otf" id="3_e0imi"]
 [ext_resource type="Texture2D" uid="uid://csv572lo4314x" path="res://Sprites/Background/NightSkyBLACKBG.png" id="4_t3r67"]
 [ext_resource type="Texture2D" uid="uid://d31brtmjydlu8" path="res://Sprites/Background/NightSky.png" id="5_rkb54"]
-=======
-[ext_resource type="AudioStream" uid="uid://cwajiy2sv5vup" path="res://Audio/Music/MainMenuTest.wav" id="3_20yth"]
->>>>>>> b7ecea937d7aab677335b683f46388b40fed96e2
 
 [node name="MainMenu" type="Node2D"]
 
