@@ -53,16 +53,16 @@ func _grantPowerUp(index):
 		0:
 			player.maxJumpCount+=1
 		1:
-			player.SPEED+= 100
+			player.SPEED+= 25
 		2:
 			player.bulletCooldown = player.bulletCooldown/2
 		3:
-			player.maxHealth+=10
+			player.maxHealth+=20
 			player.health = player.maxHealth
 		4:
 			player.bulletCount+=1
 		5:
-			player.bulletDamge+=1
+			player.bulletDamge+=2
 			
 	player.nextXP = int(player.nextXP*2)
 	player.level+=1

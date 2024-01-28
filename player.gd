@@ -13,7 +13,7 @@ const JUMP_VELOCITY = -250.0
 var bulletCooldown = 60
 var currentBulletCooldown = 0
 var bulletCount = 1
-var bulletDamage = 1900
+var bulletDamage = 5
 
 var maxJumpCount = 3
 var jumpCount = 3
