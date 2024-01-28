@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://MainMenuButton.gd" id="1_cwlci"]
 [ext_resource type="AudioStream" uid="uid://7hkyig77pghq" path="res://Audio/SFX/UI etc/UIConfirmSelect.wav" id="2_uylwo"]
-[ext_resource type="AudioStream" uid="uid://cw6jubr5a75r" path="res://Audio/Music/MainMenuTest.wav" id="3_20yth"]
+[ext_resource type="AudioStream" uid="uid://cwajiy2sv5vup" path="res://Audio/Music/MainMenuTest.wav" id="3_20yth"]
 [ext_resource type="FontFile" uid="uid://dkusyemblufbm" path="res://Fonts/Sabo-Filled.otf" id="3_e0imi"]
 [ext_resource type="Texture2D" uid="uid://csv572lo4314x" path="res://Sprites/Background/NightSkyBLACKBG.png" id="4_t3r67"]
 [ext_resource type="Texture2D" uid="uid://d31brtmjydlu8" path="res://Sprites/Background/NightSky.png" id="5_rkb54"]
@@ -13,9 +13,9 @@
 
 [node name="Play" type="Button" parent="CanvasLayer"]
 offset_left = 434.5
-offset_top = 200.0
+offset_top = 293.816
 offset_right = 722.5
-offset_bottom = 262.0
+offset_bottom = 355.816
 focus_neighbor_bottom = NodePath("../QuitButton")
 theme_override_fonts/font = ExtResource("3_e0imi")
 text = "Play"
@@ -34,10 +34,10 @@ theme_override_fonts/font = ExtResource("3_e0imi")
 text = "Quit"
 
 [node name="Label" type="Label" parent="CanvasLayer"]
-offset_left = -10.0
-offset_top = 106.0
-offset_right = 1142.0
-offset_bottom = 221.0
+offset_left = -2.0
+offset_top = 199.816
+offset_right = 1150.0
+offset_bottom = 314.816
 rotation = -0.105941
 theme_override_fonts/font = ExtResource("3_e0imi")
 theme_override_font_sizes/font_size = 60
@@ -63,6 +63,8 @@ centered = false
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_20yth")
+autoplay = true
+bus = &"Music"
 
 [connection signal="focus_entered" from="CanvasLayer/Play" to="CanvasLayer/Play" method="_on_focus_entered"]
 [connection signal="focus_exited" from="CanvasLayer/Play" to="CanvasLayer/Play" method="_on_focus_exited"]

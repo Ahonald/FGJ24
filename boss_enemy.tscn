@@ -1,10 +1,12 @@
-[gd_scene load_steps=17 format=3 uid="uid://cmq1intcs1dw3"]
+[gd_scene load_steps=19 format=3 uid="uid://cmq1intcs1dw3"]
 
 [ext_resource type="Texture2D" uid="uid://dld5q1ejj6nm6" path="res://Sprites/Character/boss.png" id="1_qurbw"]
 [ext_resource type="Script" path="res://boss_enemy.gd" id="1_wldjs"]
 [ext_resource type="Texture2D" uid="uid://c6mfm55gcyitd" path="res://Sprites/Character/bigexplosion.png" id="2_lgcvg"]
 [ext_resource type="Texture2D" uid="uid://bm0mhemvwcnoc" path="res://Sprites/Character/boss2.png" id="2_r5q7q"]
 [ext_resource type="Texture2D" uid="uid://3d4h6bwah5h4" path="res://Sprites/Character/Sprite-0004.png" id="4_vexg7"]
+[ext_resource type="AudioStream" uid="uid://byl3kb35y68ev" path="res://Audio/SFX/Gun/GunShoot-001.wav" id="6_xbati"]
+[ext_resource type="AudioStream" uid="uid://b0rm5rt0qexit" path="res://Audio/SFX/Enemies/BossTP.mp3" id="7_cd0qq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xoxkw"]
 atlas = ExtResource("2_lgcvg")
@@ -231,3 +233,14 @@ position = Vector2(0, -20)
 
 [node name="LHB6" type="Node2D" parent="LeftHandBullets"]
 position = Vector2(0, -30)
+
+[node name="BulletSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_xbati")
+volume_db = -2.0
+pitch_scale = 0.26
+bus = &"SFX"
+
+[node name="BossTP" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_cd0qq")
+volume_db = -17.0
+bus = &"SFX"
