@@ -1,8 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://bqdfi0uceuttp"]
+[gd_scene load_steps=19 format=3 uid="uid://dmfcapjmf61se"]
 
 [ext_resource type="Script" path="res://robot.gd" id="1_4huul"]
 [ext_resource type="Texture2D" uid="uid://c411wji2n6f6x" path="res://Sprites/Character/explosion.png" id="2_fgnpc"]
 [ext_resource type="Texture2D" uid="uid://c5kmg2isftybp" path="res://Sprites/Character/purplerobot.png" id="3_1mnd8"]
+[ext_resource type="AudioStream" uid="uid://c80icvc18ss73" path="res://Audio/SFX/Enemies/RobotPiip.wav" id="4_uew65"]
+[ext_resource type="AudioStream" uid="uid://mt4rfqg4nand" path="res://Audio/SFX/Enemies/EnemyHurt-001.wav" id="5_sn1e8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g0x4k"]
 atlas = ExtResource("2_fgnpc")
@@ -211,6 +213,16 @@ position = Vector2(-20, 0)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(4, 2)
 shape = SubResource("RectangleShape2D_ft5mh")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_uew65")
+volume_db = -5.557
+bus = &"SFX"
+
+[node name="RoboHurt" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_sn1e8")
+pitch_scale = 0.65
+bus = &"SFX"
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

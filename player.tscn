@@ -1,10 +1,13 @@
-[gd_scene load_steps=32 format=3 uid="uid://c0xbihl6kfm8l"]
+[gd_scene load_steps=35 format=3 uid="uid://c0xbihl6kfm8l"]
 
 [ext_resource type="Texture2D" uid="uid://v7tprt42uy6m" path="res://Sprites/Character/Old hero.png" id="1_ag8gm"]
 [ext_resource type="Script" path="res://player.gd" id="1_nmjc3"]
 [ext_resource type="Script" path="res://dmgtext.gd" id="3_0vemo"]
 [ext_resource type="FontFile" uid="uid://dkusyemblufbm" path="res://Fonts/Sabo-Filled.otf" id="3_ibg6f"]
 [ext_resource type="Texture2D" uid="uid://0w6wv7mlj7gx" path="res://Sprites/Character/explosion_green.png" id="4_q8g7d"]
+[ext_resource type="AudioStream" uid="uid://c3w0re06kikny" path="res://Audio/SFX/Player/PlayerHurt-001.wav" id="6_gkwpg"]
+[ext_resource type="AudioStream" uid="uid://byl3kb35y68ev" path="res://Audio/SFX/Gun/GunShoot-001.wav" id="7_e6j7k"]
+[ext_resource type="AudioStream" uid="uid://cud3dukkyy5b4" path="res://Audio/SFX/Player/PlayerJump-001.wav" id="8_siut1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ga48y"]
 size = Vector2(16, 16)
@@ -390,7 +393,17 @@ autoplay = "Idle"
 position = Vector2(0, -1)
 zoom = Vector2(2, 2)
 
-[node name="PlayerAudio" type="AudioStreamPlayer2D" parent="."]
+[node name="PlayerHurt" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_gkwpg")
+bus = &"SFX"
+
+[node name="PlayerShoot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_e6j7k")
+bus = &"SFX"
+
+[node name="PlayerJump" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_siut1")
+bus = &"SFX"
 
 [node name="BulletSpawnPoint" type="Node2D" parent="."]
 position = Vector2(8, 0)

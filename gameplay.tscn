@@ -1,14 +1,14 @@
-[gd_scene load_steps=34 format=3 uid="uid://c202yvemg0spw"]
+[gd_scene load_steps=32 format=3 uid="uid://c202yvemg0spw"]
 
 [ext_resource type="PackedScene" uid="uid://c0xbihl6kfm8l" path="res://player.tscn" id="1_0fxm6"]
 [ext_resource type="Script" path="res://gameplay.gd" id="1_m4jxv"]
 [ext_resource type="Texture2D" uid="uid://dlegl8a6otekn" path="res://Sprites/Ground and Terrain/Lvl1Ground.png" id="1_uniq1"]
 [ext_resource type="Texture2D" uid="uid://csv572lo4314x" path="res://Sprites/Background/NightSkyBLACKBG.png" id="2_ltun7"]
-[ext_resource type="Texture2D" uid="uid://cy1jupbw7upg1" path="res://Sprites/Ground and Terrain/GroundSheetPurple32x32.png" id="3_hv7vg"]
+[ext_resource type="Texture2D" uid="uid://b5kbd4oylg6v" path="res://Sprites/Ground and Terrain/GroundSheetPurple32x32.png" id="3_hv7vg"]
 [ext_resource type="Texture2D" uid="uid://d31brtmjydlu8" path="res://Sprites/Background/NightSky.png" id="3_oh3cd"]
 [ext_resource type="FontFile" uid="uid://dkusyemblufbm" path="res://Fonts/Sabo-Filled.otf" id="3_omyyo"]
 [ext_resource type="PackedScene" uid="uid://cv5ljghmg7wxw" path="res://slime.tscn" id="4_6itfw"]
-[ext_resource type="Texture2D" uid="uid://26jmcdr0aqe5" path="res://Sprites/Enviromental/Misc.png" id="4_y0pm4"]
+[ext_resource type="Texture2D" uid="uid://c6l0d473r75i" path="res://Sprites/Enviromental/Misc.png" id="4_y0pm4"]
 [ext_resource type="Script" path="res://LevelUpPanel.gd" id="7_1b24v"]
 [ext_resource type="Texture2D" uid="uid://d1sqkef75r3m2" path="res://Sprites/black.png" id="7_5vkda"]
 [ext_resource type="PackedScene" uid="uid://dtd25jm2xcf4k" path="res://moving_platform.tscn" id="9_qdffp"]
@@ -17,13 +17,11 @@
 [ext_resource type="PackedScene" uid="uid://dubg01op5mmoy" path="res://slime_green.tscn" id="12_abg1h"]
 [ext_resource type="PackedScene" uid="uid://vgxngyn8ff16" path="res://slime_yellow.tscn" id="14_7np4m"]
 [ext_resource type="PackedScene" uid="uid://dwamwgvog17v8" path="res://slime_red.tscn" id="15_p5faw"]
-[ext_resource type="PackedScene" uid="uid://bqdfi0uceuttp" path="res://purple_robot.tscn" id="16_2jgya"]
+[ext_resource type="PackedScene" uid="uid://dmfcapjmf61se" path="res://purple_robot.tscn" id="16_2jgya"]
 [ext_resource type="PackedScene" uid="uid://caxeh081dj7m8" path="res://robot.tscn" id="17_wwgof"]
 [ext_resource type="PackedScene" uid="uid://76p3om2v567b" path="res://bat.tscn" id="19_jjhhq"]
 [ext_resource type="PackedScene" uid="uid://b27md0v3h5q5c" path="res://death_zone.tscn" id="20_8juij"]
-[ext_resource type="PackedScene" uid="uid://cmq1intcs1dw3" path="res://boss_enemy.tscn" id="22_7gldg"]
-[ext_resource type="PackedScene" uid="uid://cn6k13e40vhrt" path="res://boss_door.tscn" id="23_65abd"]
-[ext_resource type="PackedScene" uid="uid://db7bj8iwyt863" path="res://boss_trigger.tscn" id="24_da2o5"]
+[ext_resource type="AudioStream" uid="uid://ckj8r0tb3mado" path="res://Audio/Music/GobboLevel.wav" id="22_48ncx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q0irt"]
 texture = ExtResource("1_uniq1")
@@ -870,7 +868,8 @@ texture = ExtResource("3_oh3cd")
 centered = false
 
 [node name="Player" parent="." instance=ExtResource("1_0fxm6")]
-position = Vector2(9516, -1465)
+process_mode = 1
+position = Vector2(2914, -1216)
 
 [node name="TileMap" type="TileMap" parent="."]
 process_mode = 1
@@ -1532,23 +1531,13 @@ position = Vector2(8455, -1607)
 [node name="SlimeEnemy64" parent="." instance=ExtResource("15_p5faw")]
 position = Vector2(8537, -1602)
 
-[node name="SlimeEnemy65" parent="." instance=ExtResource("12_abg1h")]
-position = Vector2(8817, -1481)
+[node name="RobotEnemy24" parent="." instance=ExtResource("17_wwgof")]
+position = Vector2(3026, -1225)
 
-[node name="SlimeEnemy66" parent="." instance=ExtResource("15_p5faw")]
-position = Vector2(8994, -1551)
-
-[node name="SlimeEnemy67" parent="." instance=ExtResource("14_7np4m")]
-position = Vector2(8956, -1590)
-
-[node name="BossEnemy" parent="." instance=ExtResource("22_7gldg")]
-position = Vector2(9889, -1713)
-
-[node name="BossDoor" parent="." instance=ExtResource("23_65abd")]
-position = Vector2(9487, -1467)
-
-[node name="BossTrigger" parent="." instance=ExtResource("24_da2o5")]
-position = Vector2(9665, -1452)
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("22_48ncx")
+autoplay = true
+bus = &"Music"
 
 [connection signal="pressed" from="UI/LevelUpPanel/BG/Button" to="UI/LevelUpPanel/BG/Button" method="_on_pressed"]
 [connection signal="pressed" from="UI/LevelUpPanel/BG/Button2" to="UI/LevelUpPanel/BG/Button2" method="_on_pressed"]

@@ -14,6 +14,8 @@ var shootCoolDown = 0
 @onready var anim = get_node("AnimationPlayer") 
 @onready var bullet = preload("res://enemy_bullet_redbullet.tscn")
 @onready var gameplay = $".."
+@onready var audio = get_node ("AudioStreamPlayer2D")
+@onready var hurt = get_node ("RoboHurt")
 
 var bulletDir = 1
 # Called when the node enters the scene tree for the first time.
@@ -67,6 +69,7 @@ func _on_detection_area_body_exited(body):
 		
 func _shoot():		
 	var newBullet = bullet.instantiate()
+	audio.play()
 	gameplay.add_child(newBullet)
 	newBullet.dirX = bulletDir
 	newBullet.dirY = 0
@@ -79,4 +82,5 @@ func _shoot():
 	anim.play("shoot")
 
 func _takeDamage(dmg = 5):
+	hurt.play()
 	health-=5

@@ -32,7 +32,6 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var bulletPoint8 = $BulletSpawnPoint8
 
 
-var audio
 var dead
 var isShooting
 var isPointingRight
@@ -48,10 +47,12 @@ var isPointingRight
 @onready var lvlLabel = $"../UI/LevelLabel"
 @onready var gameplay = $".."
 @onready var sprite = $AnimatedSprite2D
+@onready var PlayerHurt = get_node("PlayerHurt")
+@onready var PlayerShoot = get_node("PlayerShoot")
+@onready var PlayerJump = get_node("PlayerJump")
 
 func _ready():
 	anim.play("Idle")
-	audio = get_node("PlayerAudio")
 	gameplay = $".."
 	xpBar.max_value = float(nextXP)
 	dead = false
@@ -82,6 +83,7 @@ func _physics_process(delta):
 			velocity.y = JUMP_VELOCITY
 			jumpCount-=1
 			if !isShooting:
+				PlayerJump.play()
 				anim.play("Jump")
 				
 		var direction = Input.get_axis("ui_left", "ui_right")
@@ -104,6 +106,7 @@ func _physics_process(delta):
 		
 		if(Input.is_action_just_pressed("Fire") && currentBulletCooldown <= 0):
 			isShooting = true
+			PlayerShoot.play()
 			currentBulletCooldown = bulletCooldown
 			
 			var newBullet = bullet.instantiate()
@@ -177,6 +180,7 @@ func _on_damage_box_body_entered(body):
 		else:
 			velocity.y = JUMP_VELOCITY
 			velocity.x = -JUMP_VELOCITY
+		PlayerHurt.play()
 		_takeDmg(body.dmg) 
 		#body.die = true
 
